@@ -21,19 +21,25 @@ const heroImages = [
         id: 1,
         src: '/images/hero/WG_AREA.jpg',
         alt: 'Lobby',
-        bg: 'bg-gradient-to-br from-amber-900 to-amber-700'
+        bg: 'bg-gradient-to-br from-amber-900 to-amber-700',
+        title: 'Whistler Garden',
+        sub: 'Where memories are crafted'
     },
     {
         id: 2,
         src: '/images/hero/WG_GRAND_BALLROM.jpg',
         alt: 'Hotel Ballroom Area',
-        bg: 'bg-gradient-to-br from-blue-900 to-blue-700'
+        bg: 'bg-gradient-to-br from-blue-900 to-blue-700',
+        title: 'Whistler Garden',
+        sub: 'Where memories are crafted'
     },
     {
         id: 3,
         src: '/images/hero/WG_ROOM_PREMIUM SUITE-2.jpg',
         alt: 'Hotel Premium Suite Room',
-        bg: 'bg-gradient-to-br from-gray-900 to-gray-700'
+        bg: 'bg-gradient-to-br from-gray-900 to-gray-700',
+        title: 'Whistler Garden',
+        sub: 'Where memories are crafted'
     }
 ]
 
@@ -62,15 +68,14 @@ return (
                 <div className="absolute inset-0 bg-hero-overlay" />
                 
                 {/* Hero Content */}
-                <div className="relative z-10 text-center text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="relative z-10 text-center text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bottom-0">
                     <div className="mb-12">
-                        <p className="font-dancing text-2xl md:text-4xl mb-4 text-shadow-lg">
-                            Explore the beauty of
-                        </p>
-                        
-                        <h1 className="text-hero text-shadow-lg mb-8">
-                            WHISTLER GARDEN
+                        <h1 className="text-hero text-shadow-lg mb-4">
+                            {image.title}
                         </h1>
+                        <p className="font-dancing text-2xl md:text-4xl mb-4 text-shadow-lg">
+                            {image.sub}
+                        </p>
                     </div>
                 </div>
                 
