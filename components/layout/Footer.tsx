@@ -87,8 +87,8 @@ const Footer = ({ className }: FooterProps) => {
           <div className="text-center lg:text-left">
             <div className="flex justify-center lg:justify-start mb-6">
               <div className="flex flex-col items-center lg:items-start">
-                <div className="w-20 h-20 bg-accent-gold rounded-full flex items-center justify-center mb-4">
-                  <span className="font-playfair font-bold text-2xl text-white">S</span>
+                <div className="w-20 h-20 bg-accent-gold rounded-full flex items-center justify-center mb-4 p-2">
+                  <img src="/images/logos/logo-transp-white.png" alt="Whistler Garden Logo" className="w-full h-full object-contain" />
                 </div>
                 <div className="font-playfair text-2xl font-bold text-accent-gold">
                   WHISTLER<br />GARDEN

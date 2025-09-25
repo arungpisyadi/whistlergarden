@@ -11,8 +11,8 @@ const Testimonial = ({ className }: TestimonialProps) => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Hotel Logo */}
           <div className="flex justify-center mb-8">
-            <div className="w-24 h-24 bg-accent-gold rounded-full flex items-center justify-center shadow-lg">
-              <span className="font-playfair font-bold text-3xl text-white">S</span>
+            <div className="w-24 h-24 bg-accent-gold rounded-full flex items-center justify-center shadow-lg p-2">
+              <img src="/images/logos/logo-transp-white.png" alt="Whistler Garden Logo" className="w-full h-full object-contain" />
             </div>
           </div>
           
@@ -32,8 +32,8 @@ const Testimonial = ({ className }: TestimonialProps) => {
           {/* Attribution (optional) */}
           <div className="mt-12 pt-8 border-t border-gray-300">
             <div className="flex justify-center items-center space-x-2">
-              <div className="w-8 h-8 bg-accent-gold rounded-full flex items-center justify-center">
-                <span className="font-playfair font-bold text-white text-sm">S</span>
+              <div className="w-8 h-8 bg-accent-gold rounded-full flex items-center justify-center p-1">
+                <img src="/images/logos/logo-transp-white.png" alt="Logo" className="w-full h-full object-contain" />
               </div>
               <span className="font-playfair font-semibold text-accent-gold">
                 WHISTLER GARDEN

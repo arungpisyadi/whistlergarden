@@ -26,9 +26,9 @@ module.exports = {
         }
       },
       fontFamily: {
-        'playfair': ['Playfair Display', 'serif'],
-        'inter': ['Inter', 'sans-serif'],
-        'dancing': ['Dancing Script', 'cursive'],
+        'playfair': ['var(--font-montserrat)', 'sans-serif'],
+        'inter': ['var(--font-montserrat)', 'sans-serif'],
+        'dancing': ['var(--font-montserrat)', 'sans-serif'],
       },
       fontSize: {
         'hero': ['3.5rem', {
