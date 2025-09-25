@@ -24,26 +24,26 @@ const leftNavigationItems = [
     },
     {
         text: 'BIRTHDAY',
-        href: '#'
+        href: '#birthday'
     },
     {
         text: 'ARISAN & REUNI',
-        href: '#'
+        href: '#arisan-reuni'
     }
 ]
 
     const rightNavigationItems = [
     {
         text: 'COMMUNITY EVENTS',
-        href: '#'
+        href: '#community'
     },
     {
         text: 'FAMILY GATHERING',
-        href: '#'
+        href: '#family-gathering'
     },
     {
         text: 'ABOUT US',
-        href: '#'
+        href: '#about'
     },
     {
         text: 'CONTACT US',
@@ -116,11 +116,11 @@ return (
                         <nav className="flex space-x-6 bg-primary-500 text-white">
                             {leftNavigationItems.map((item) => (
                                 <a
-                                key={item.text}
-                                href={item.href}
+                                key={item?.text || 'nav-item'}
+                                href={item?.href || '#'}
                                 className="font-inter text-xs font-medium hover:text-accent-gold transition-colors duration-200 whitespace-nowrap"
                                 >
-                                {item.text}
+                                {typeof item?.text === 'string' ? item.text : 'Menu Item'}
                                 </a>
                             ))}
                         </nav>
@@ -138,11 +138,11 @@ return (
                         <nav className="flex space-x-6 bg-primary-500 text-white">
                             {rightNavigationItems.map((item) => (
                                 <a
-                                key={item.text}
-                                href={item.href}
+                                key={item?.text || 'nav-item'}
+                                href={item?.href || '#'}
                                 className="font-inter text-xs font-medium hover:text-accent-gold transition-colors duration-200 whitespace-nowrap"
                                 >
-                                {item.text}
+                                {typeof item?.text === 'string' ? item.text : 'Menu Item'}
                                 </a>
                             ))}
                         </nav>
@@ -150,18 +150,17 @@ return (
                 </div>
 
                 {/* Mobile Navigation Menu */}
-                {/* Mobile Navigation Menu */}
                 {isMobileMenuOpen && (
                 <div className="lg:hidden border-t border-gray-600">
                     <nav className="py-4 space-y-4">
                     {allNavigationItems.map((item) => (
                         <a
-                        key={item.text}
-                        href={item.href}
+                        key={item?.text || 'nav-item'}
+                        href={item?.href || '#'}
                         className="block font-inter text-sm font-medium hover:text-accent-gold transition-colors duration-200 py-2"
                         onClick={() => setIsMobileMenuOpen(false)}
                         >
-                        {item.text}
+                        {typeof item?.text === 'string' ? item.text : 'Menu Item'}
                         </a>
                     ))}
                     </nav>
