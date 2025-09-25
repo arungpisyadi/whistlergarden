@@ -14,17 +14,41 @@ const Header = () => {
 const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
 const leftNavigationItems = [
-    'HOME',
-    'CORPORATE EVENTS',
-    'BIRTHDAY',
-    'ARISAN & REUNI'
+    {
+        text: 'HOME',
+        href: '#'
+    },
+    {
+        text: 'CORPORATE EVENTS',
+        href: '#corporate'
+    },
+    {
+        text: 'BIRTHDAY',
+        href: '#'
+    },
+    {
+        text: 'ARISAN & REUNI',
+        href: '#'
+    }
 ]
 
-const rightNavigationItems = [
-    'COMMUNITY EVENTS',
-    'FAMILY GATHERING',
-    'ABOUT US',
-    'CONTACT US'
+    const rightNavigationItems = [
+    {
+        text: 'COMMUNITY EVENTS',
+        href: '#'
+    },
+    {
+        text: 'FAMILY GATHERING',
+        href: '#'
+    },
+    {
+        text: 'ABOUT US',
+        href: '#'
+    },
+    {
+        text: 'CONTACT US',
+        href: '#'
+    }
 ]
 
 const allNavigationItems = [...leftNavigationItems, ...rightNavigationItems]
@@ -92,11 +116,11 @@ return (
                         <nav className="flex space-x-6 bg-primary-500 text-white">
                             {leftNavigationItems.map((item) => (
                                 <a
-                                key={item}
-                                href="#"
+                                key={item.text}
+                                href={item.href}
                                 className="font-inter text-xs font-medium hover:text-accent-gold transition-colors duration-200 whitespace-nowrap"
                                 >
-                                {item}
+                                {item.text}
                                 </a>
                             ))}
                         </nav>
@@ -114,11 +138,11 @@ return (
                         <nav className="flex space-x-6 bg-primary-500 text-white">
                             {rightNavigationItems.map((item) => (
                                 <a
-                                key={item}
-                                href="#"
+                                key={item.text}
+                                href={item.href}
                                 className="font-inter text-xs font-medium hover:text-accent-gold transition-colors duration-200 whitespace-nowrap"
                                 >
-                                {item}
+                                {item.text}
                                 </a>
                             ))}
                         </nav>
@@ -132,12 +156,12 @@ return (
                     <nav className="py-4 space-y-4">
                     {allNavigationItems.map((item) => (
                         <a
-                        key={item}
-                        href="#"
+                        key={item.text}
+                        href={item.href}
                         className="block font-inter text-sm font-medium hover:text-accent-gold transition-colors duration-200 py-2"
                         onClick={() => setIsMobileMenuOpen(false)}
                         >
-                        {item}
+                        {item.text}
                         </a>
                     ))}
                     </nav>
