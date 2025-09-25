@@ -3,12 +3,19 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import { 
+import {
   MapPinIcon,
   PhoneIcon,
   GlobeAltIcon,
   EnvelopeIcon
 } from '@heroicons/react/24/outline'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faInstagram,
+  faYoutube,
+  faTiktok,
+  faXTwitter
+} from '@fortawesome/free-brands-svg-icons'
 
 interface FooterProps {
   className?: string
@@ -34,10 +41,10 @@ const Footer = ({ className }: FooterProps) => {
   }
 
   const socialLinks = [
-    { name: 'Facebook', icon: '📘', href: '#' },
-    { name: 'Instagram', icon: '📷', href: '#' },
-    { name: 'Twitter', icon: '🐦', href: '#' },
-    { name: 'LinkedIn', icon: '💼', href: '#' }
+    { name: 'Instagram', icon: faInstagram, href: '#' },
+    { name: 'YouTube', icon: faYoutube, href: '#' },
+    { name: 'TikTok', icon: faTiktok, href: '#' },
+    { name: 'Twitter', icon: faXTwitter, href: '#' }
   ]
 
   return (
@@ -131,7 +138,7 @@ const Footer = ({ className }: FooterProps) => {
                   className="w-10 h-10 bg-gray-700 hover:bg-accent-gold rounded-full flex items-center justify-center transition-colors duration-200"
                   aria-label={social.name}
                 >
-                  <span className="text-lg">{social.icon}</span>
+                  <FontAwesomeIcon icon={social.icon} className="text-lg text-white" />
                 </a>
               ))}
             </div>
