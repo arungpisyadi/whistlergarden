@@ -53,7 +53,7 @@ const FeatureSections = ({ className }: FeatureSectionsProps) => {
     },
     {
       id: 'experience-hotel',
-      title: 'EXPERIENCE STRADELLA HOTEL',
+      title: 'EXPERIENCE WHISTLER GARDEN',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
       imageBg: 'bg-gradient-to-br from-blue-800 to-blue-600',
       ctaText: 'VIEW MORE'

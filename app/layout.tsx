@@ -21,13 +21,13 @@ const dancingScript = Dancing_Script({
 })
 
 export const metadata: Metadata = {
-  title: 'Stradella Hotel - Luxury Accommodation',
-  description: 'Experience the beauty and luxury of Stradella Hotel. Premium accommodations, exceptional service, and unforgettable experiences await.',
-  keywords: 'hotel, luxury, accommodation, stradella, booking, rooms, restaurant',
-  authors: [{ name: 'Stradella Hotel' }],
+  title: 'Whistler Garden - Luxury Accommodation',
+  description: 'Experience the beauty and luxury of Whistler Garden. Premium accommodations, exceptional service, and unforgettable experiences await.',
+  keywords: 'hotel, luxury, accommodation, whistler, booking, rooms, restaurant',
+  authors: [{ name: 'Whistler Garden' }],
   openGraph: {
-    title: 'Stradella Hotel - Luxury Accommodation',
-    description: 'Experience the beauty and luxury of Stradella Hotel. Premium accommodations, exceptional service, and unforgettable experiences await.',
+    title: 'Whistler Garden - Luxury Accommodation',
+    description: 'Experience the beauty and luxury of Whistler Garden. Premium accommodations, exceptional service, and unforgettable experiences await.',
     type: 'website',
     locale: 'en_US',
   },

@@ -67,17 +67,10 @@ const HeroSlider = ({ className }: HeroSliderProps) => {
                   <p className="font-dancing text-2xl md:text-4xl mb-4 text-shadow-lg">
                     Explore the beauty of
                   </p>
+                  
                   <h1 className="text-hero text-shadow-lg mb-8">
-                    STRADELLA HOTEL
+                    WHISTLER GARDEN
                   </h1>
-                </div>
-                
-                {/* Booking Form */}
-                <div className="max-w-5xl mx-auto">
-                  <BookingForm 
-                    onSubmit={handleBookingSubmit}
-                    className="animate-slide-up"
-                  />
                 </div>
               </div>
               

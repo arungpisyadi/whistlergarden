@@ -84,12 +84,12 @@ const Footer = ({ className }: FooterProps) => {
                   <span className="font-playfair font-bold text-2xl text-white">S</span>
                 </div>
                 <div className="font-playfair text-2xl font-bold text-accent-gold">
-                  STRADELLA<br />HOTEL
+                  WHISTLER<br />GARDEN
                 </div>
               </div>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Experience the beauty of luxury at Stradella Hotel. Your perfect getaway awaits with exceptional service and unforgettable memories.
+              Experience the beauty of luxury at Whistler Garden. Your perfect getaway awaits with exceptional service and unforgettable memories.
             </p>
           </div>
 
@@ -109,11 +109,11 @@ const Footer = ({ className }: FooterProps) => {
               </div>
               <div className="flex items-center justify-center lg:justify-start space-x-3">
                 <GlobeAltIcon className="h-5 w-5 text-accent-gold flex-shrink-0" />
-                <span>STRADELLAHOTEL.COM</span>
+                <span>WHISTLERGARDEN.COM</span>
               </div>
               <div className="flex items-center justify-center lg:justify-start space-x-3">
                 <EnvelopeIcon className="h-5 w-5 text-accent-gold flex-shrink-0" />
-                <span>INFO@STRADELLAHOTEL.COM</span>
+                <span>INFO@WHISTLERGARDEN.COM</span>
               </div>
             </div>
           </div>
@@ -147,7 +147,7 @@ const Footer = ({ className }: FooterProps) => {
         <div className="border-t border-gray-600 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-gray-300">
-              © 2024 Stradella Hotel. All rights reserved.
+              © 2024 Whistler Garden. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-gray-300 hover:text-accent-gold transition-colors duration-200">

@@ -1,10 +1,10 @@
-# Stradella Hotel Website Architecture Plan
+# Whistler Garden Website Architecture Plan
 **NextJS + TailwindCSS Implementation Guide**
 
 ## 1. Overall Layout Structure & Component Hierarchy
 
 ### Page Layout Analysis
-The Stradella Hotel website follows a classic luxury hotel layout with the following main sections:
+The Whistler Garden website follows a classic luxury hotel layout with the following main sections:
 
 ```
 ├── Header
@@ -21,7 +21,7 @@ The Stradella Hotel website follows a classic luxury hotel layout with the follo
 │   │   └── Booking Form
 ├── Features Section
 │   ├── Featured Package
-│   ├── Experience Stradella Hotel
+│   ├── Experience Whistler Garden
 │   └── Special Offers
 ├── Testimonial Section
 │   ├── Logo
@@ -38,7 +38,7 @@ The Stradella Hotel website follows a classic luxury hotel layout with the follo
   - Left: Phone number with icon
   - Right: Location and email
 - **Main Navigation**: Centered logo with horizontal menu
-  - Logo: Stradella Hotel branding (circular design)
+  - Logo: Whistler Garden branding (circular design)
   - Menu Items: HOME, ROOMS, MEETING AND EVENTS, PROMOS, PHOTOS, ABOUT US, RESTAURANT, CONTACT US
 
 
@@ -165,7 +165,7 @@ sequenceDiagram
 - **Background**: Large hero image (bedroom/suite)
 - **Overlay Content**:
   - Elegant typography: "Explore the beauty of"
-  - Hotel name: "STRADELLA HOTEL"
+  - Hotel name: "Whistler Garden"
   - **Booking Form** (`components/BookingForm.tsx`):
     - Arrival date picker
     - Departure date picker
@@ -176,7 +176,7 @@ sequenceDiagram
 #### 3. Features Section (`components/FeaturesSection.tsx`)
 Three equal-width cards:
 - **Featured Package**: Luxury room image
-- **Experience Stradella Hotel**: Pool/exterior view
+- **Experience Whistler Garden**: Pool/exterior view
 - **Special Offers**: Hotel lobby/interior
 Each with:
 - High-quality imagery
@@ -596,4 +596,4 @@ module.exports = {
 - Implement proper caching strategies
 - Use Next.js built-in performance optimizations
 
-This architecture plan provides a comprehensive foundation for implementing the Stradella Hotel website with modern web development best practices while maintaining the luxury aesthetic shown in the design reference.
+This architecture plan provides a comprehensive foundation for implementing the Whistler Garden website with modern web development best practices while maintaining the luxury aesthetic shown in the design reference.

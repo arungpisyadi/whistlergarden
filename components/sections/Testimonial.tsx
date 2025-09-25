@@ -36,7 +36,7 @@ const Testimonial = ({ className }: TestimonialProps) => {
                 <span className="font-playfair font-bold text-white text-sm">S</span>
               </div>
               <span className="font-playfair font-semibold text-accent-gold">
-                STRADELLA HOTEL
+                WHISTLER GARDEN
               </span>
             </div>
             <p className="text-gray-600 text-sm mt-2">
