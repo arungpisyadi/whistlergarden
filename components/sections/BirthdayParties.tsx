@@ -11,14 +11,14 @@ const BirthdayParties = ({ className }: BirthdayPartiesProps) => {
   const birthdayEvents = [
     {
       id: 1,
-      src: '/images/birthday/EDITED-12.jpg',
+      src: '/images/birthday/ROYALE_BIRTHDAY KIDS-6.jpg',
       alt: 'Kids Birthday Celebration',
       title: 'Kids Birthday Parties',
       description: 'Create magical memories for your little ones with our specially designed kids birthday celebrations.',
     },
     {
       id: 2,
-      src: '/images/birthday/EDITED-25.jpg',
+      src: '/images/birthday/SWEET17-1.jpg',
       alt: 'Sweet Seventeen Celebration',
       title: 'Sweet Seventeen Parties',
       description: 'Celebrate your special day in style with elegant decorations and premium service.',

@@ -10,19 +10,22 @@ const CorporateEvents = ({ className }: CorporateEventsProps) => {
 // Corporate event images - using existing images and placeholder URLs
 const corporateImages = [
     {
-    id: 1,
-    src: '/images/corporate/WG_Function Room 2.jpeg',
-    alt: 'Corporate Meeting Room',
+        id: 1,
+        src: '/images/corporate/CORPORATE1.jpg',
+        alt: 'Corporate Meeting',
+        desc: 'Our indoor space offer comfort and luxury that will boost your team spirit.'
     },
     {
-    id: 2,
-    src: '/images/corporate/AREA-9.jpg', 
-    alt: 'Corporate Event Space',
+        id: 2,
+        src: '/images/corporate/CORPORATE2.jpg', 
+        alt: 'Corporate Event',
+        desc: 'We will turn your corporate events into something memorable and inspiring.'
     },
     {
-    id: 3,
-    src: '/images/corporate/PIC09044.JPG',
-    alt: 'Executive Corporate Suite',
+        id: 3,
+        src: '/images/corporate/PIC09044.JPG',
+        alt: 'Executive Corporate Suite',
+        desc: 'We also have private suites for the more intens and private discussions.'
     }
 ]
 
@@ -71,7 +74,7 @@ return (
             <div className="p-6">
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">{image.alt}</h3>
                 <p className="text-gray-600 text-sm">
-                Perfect venue for your corporate events and business gatherings.
+                    {image.desc}
                 </p>
             </div>
             </div>
