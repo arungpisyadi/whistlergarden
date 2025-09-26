@@ -80,11 +80,20 @@ return (
                 </div> */}
                 
                 {/* Gradient overlay for better text readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/15" />
             </div>
         </SwiperSlide>
         ))}
     </Swiper>
+
+    {/* Logo Overlay - Hidden on mobile, centered, with opacity */}
+    <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none hidden md:flex">
+        <img
+            src="/images/logos/logo-transp-white.png"
+            alt="Whistler Garden Logo"
+            className="w-auto h-[15vh] max-w-[20vw] object-contain opacity-90"
+        />
+    </div>
 
     {/* Custom Swiper Pagination Styling */}
     <style jsx global>{`
