@@ -68,7 +68,7 @@ return (
                 <div className="absolute inset-0 bg-hero-overlay" />
                 
                 {/* Hero Content */}
-                <div className="relative z-10 text-center text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bottom-0">
+                {/* <div className="relative z-10 text-center text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bottom-0">
                     <div className="mb-12">
                         <h1 className="text-hero text-shadow-lg mb-4">
                             {image.title}
@@ -77,7 +77,7 @@ return (
                             {image.sub}
                         </p>
                     </div>
-                </div>
+                </div> */}
                 
                 {/* Gradient overlay for better text readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />

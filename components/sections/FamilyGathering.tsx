@@ -11,21 +11,21 @@ const FamilyGathering = ({ className }: FamilyGatheringProps) => {
   const familyImages = [
     {
       id: 1,
-      src: '/images/family/EDITED-36.jpg',
+      src: '/images/family/Ballroom.jpg',
       alt: 'Large Space',
       sub: 'Perfect space size for your family gathering.'
     },
     {
       id: 2,
       src: '/images/family/WG_RESTO.jpg', 
-      alt: '5 Star Dining Experience',
-      sub: 'Complete the gathering with a luxuriou dining, with your family.'
+      alt: 'Luxurious Dining Experience',
+      sub: 'Complete the gathering with a luxurious dining, with your family.'
     },
     {
       id: 3,
       src: '/images/family/WG_ROOM_SUITE-4.jpg',
-      alt: 'One Night Stay',
-      sub: 'Enjoy our special package, a one night stay included.'
+      alt: 'Include a One Night Staycation',
+      sub: 'Enjoy our special package, a one night staycation at one of our luxurious suites included.'
     }
   ]
 
