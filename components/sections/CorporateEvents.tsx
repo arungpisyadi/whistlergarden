@@ -11,13 +11,13 @@ const CorporateEvents = ({ className }: CorporateEventsProps) => {
 const corporateImages = [
     {
         id: 1,
-        src: '/images/corporate/CORPORATE1.jpg',
+        src: '/images/corporate/CORPORATE2.jpg', 
         alt: 'Corporate Meeting',
         desc: 'Our indoor space offer comfort and luxury that will boost your team spirit.'
     },
     {
         id: 2,
-        src: '/images/corporate/CORPORATE2.jpg', 
+        src: '/images/corporate/CORPORATE1.jpg',
         alt: 'Corporate Event',
         desc: 'We will turn your corporate events into something memorable and inspiring.'
     },
