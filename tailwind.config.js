@@ -8,27 +8,48 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Brand Colors
+        // Whistler Garden Brand Colors
         primary: {
-          50: '#f8f9fa',
-          100: '#f1f3f4',
-          500: '#1a1a1a',
-          900: '#000000',
-        },
-        accent: {
-          gold: '#d4af37',
-          coral: '#ff6b6b',
-          'coral-dark': '#ff5252',
+          gold: '#514027',
+          'gold-light': '#a37238',
+          'gold-dark': '#493010',
+          'gold-50': '#faf9f7',
+          'gold-100': '#f5f1ec',
+          'gold-200': '#ebe2d6',
+          'gold-300': '#d9c9b5',
+          'gold-400': '#c4a888',
+          'gold-500': '#9b7f5f',
+          'gold-600': '#7a634a',
+          'gold-700': '#514027',
+          'gold-800': '#493010',
+          'gold-900': '#3a2509',
         },
         neutral: {
+          white: '#ffffff',
+          cream: '#fefcf9',
+          'cream-50': '#fefcf9',
+          'cream-100': '#fdf9f2',
+          'cream-200': '#fbf2e5',
           beige: '#f5f3f0',
+          'beige-50': '#f8f6f4',
+          'beige-100': '#f5f3f0',
+          'beige-200': '#ede8e2',
+          'beige-300': '#e0d7cd',
           'warm-gray': '#8b7355',
+          'warm-gray-light': '#a68862',
+          'warm-gray-dark': '#6b5638',
+        },
+        amber: {
+          900: '#493010', // Custom amber-900 color to match primary.gold-dark
         }
       },
       fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif'],
         'playfair': ['Playfair Display', 'serif'],
         'inter': ['Inter', 'sans-serif'],
         'dancing': ['Dancing Script', 'cursive'],
+        'sans': ['Montserrat', 'Inter', 'system-ui', 'sans-serif'],
+        'serif': ['Montserrat', 'Playfair Display', 'serif'],
       },
       fontSize: {
         'hero': ['3.5rem', {
@@ -44,6 +65,13 @@ module.exports = {
         '18': '4.5rem',
         '88': '22rem',
         '128': '32rem',
+      },
+      maxWidth: {
+        'full-width': '100vw',
+        'container': '1200px',
+      },
+      width: {
+        'full-screen': '100vw',
       },
       aspectRatio: {
         'hero': '16 / 9',

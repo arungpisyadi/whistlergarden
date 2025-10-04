@@ -5,16 +5,22 @@ import { Button } from '@/components/ui/Button'
 interface FeatureCardProps {
   title: string
   description: string
-  imageBg: string
+  imageUrl: string
   ctaText: string
   onCTAClick?: () => void
 }
 
-const FeatureCard = ({ title, description, imageBg, ctaText, onCTAClick }: FeatureCardProps) => {
+const FeatureCard = ({ title, description, imageUrl, ctaText, onCTAClick }: FeatureCardProps) => {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-      {/* Feature Image - Using placeholder colored backgrounds */}
-      <div className={`h-64 md:h-72 ${imageBg} relative`}>
+      {/* Feature Image */}
+      <div className="h-64 md:h-72 relative">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
       </div>
       
@@ -48,21 +54,21 @@ const FeatureSections = ({ className }: FeatureSectionsProps) => {
       id: 'featured-package',
       title: 'FEATURED PACKAGE',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-      imageBg: 'bg-gradient-to-br from-amber-800 to-amber-600',
+      imageUrl: 'https://placehold.co/800x600/7C3AED/FFFFFF?text=image',
       ctaText: 'VIEW MORE'
     },
     {
       id: 'experience-hotel',
-      title: 'EXPERIENCE STRADELLA HOTEL',
+      title: 'EXPERIENCE WHISTLER GARDEN',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-      imageBg: 'bg-gradient-to-br from-blue-800 to-blue-600',
+      imageUrl: 'https://placehold.co/800x600/2563EB/FFFFFF?text=image',
       ctaText: 'VIEW MORE'
     },
     {
       id: 'special-offers',
       title: 'SPECIAL OFFERS',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-      imageBg: 'bg-gradient-to-br from-gray-800 to-gray-600',
+      imageUrl: 'https://placehold.co/800x600/374151/FFFFFF?text=image',
       ctaText: 'VIEW MORE'
     }
   ]
@@ -90,7 +96,7 @@ const FeatureSections = ({ className }: FeatureSectionsProps) => {
               <FeatureCard
                 title={feature.title}
                 description={feature.description}
-                imageBg={feature.imageBg}
+                imageUrl={feature.imageUrl}
                 ctaText={feature.ctaText}
                 onCTAClick={() => handleFeatureClick(feature.id)}
               />

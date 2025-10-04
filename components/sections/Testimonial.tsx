@@ -12,7 +12,7 @@ const Testimonial = ({ className }: TestimonialProps) => {
           {/* Hotel Logo */}
           <div className="flex justify-center mb-8">
             <div className="w-24 h-24 bg-accent-gold rounded-full flex items-center justify-center shadow-lg">
-              <span className="font-playfair font-bold text-3xl text-white">S</span>
+              <span className="font-playfair font-bold text-3xl text-white">W</span>
             </div>
           </div>
           
@@ -33,10 +33,10 @@ const Testimonial = ({ className }: TestimonialProps) => {
           <div className="mt-12 pt-8 border-t border-gray-300">
             <div className="flex justify-center items-center space-x-2">
               <div className="w-8 h-8 bg-accent-gold rounded-full flex items-center justify-center">
-                <span className="font-playfair font-bold text-white text-sm">S</span>
+                <span className="font-playfair font-bold text-white text-sm">W</span>
               </div>
               <span className="font-playfair font-semibold text-accent-gold">
-                STRADELLA HOTEL
+                WHISTLER GARDEN
               </span>
             </div>
             <p className="text-gray-600 text-sm mt-2">

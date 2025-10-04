@@ -15,25 +15,22 @@ interface HeroSliderProps {
 }
 
 const HeroSlider = ({ className }: HeroSliderProps) => {
-  // Placeholder hero images - using colored rectangles for now
+  // Hero images using Unsplash API
   const heroImages = [
     {
       id: 1,
-      src: '/api/placeholder/1920/1080',
-      alt: 'Luxury Hotel Room',
-      bg: 'bg-gradient-to-br from-amber-900 to-amber-700'
+      src: 'https://placehold.co/1920x1080/8B5CF6/FFFFFF?text=image',
+      alt: 'Luxury Hotel Room'
     },
     {
       id: 2,
-      src: '/api/placeholder/1920/1080',
-      alt: 'Hotel Pool Area',
-      bg: 'bg-gradient-to-br from-blue-900 to-blue-700'
+      src: 'https://placehold.co/1920x1080/3B82F6/FFFFFF?text=image',
+      alt: 'Hotel Pool Area'
     },
     {
       id: 3,
-      src: '/api/placeholder/1920/1080',
-      alt: 'Hotel Restaurant',
-      bg: 'bg-gradient-to-br from-gray-900 to-gray-700'
+      src: 'https://placehold.co/1920x1080/6B7280/FFFFFF?text=image',
+      alt: 'Hotel Restaurant'
     }
   ]
 
@@ -57,8 +54,14 @@ const HeroSlider = ({ className }: HeroSliderProps) => {
       >
         {heroImages.map((image) => (
           <SwiperSlide key={image.id}>
-            <div className={`relative h-full ${image.bg} flex items-center justify-center`}>
-              {/* Placeholder colored background - replace with actual images */}
+            <div className="relative h-full flex items-center justify-center">
+              {/* Hero Background Image */}
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
               <div className="absolute inset-0 bg-hero-overlay" />
               
               {/* Hero Content */}
@@ -68,7 +71,7 @@ const HeroSlider = ({ className }: HeroSliderProps) => {
                     Explore the beauty of
                   </p>
                   <h1 className="text-hero text-shadow-lg mb-8">
-                    STRADELLA HOTEL
+                    WHISTLER GARDEN
                   </h1>
                 </div>
                 

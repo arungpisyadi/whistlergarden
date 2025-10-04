@@ -1,113 +1,96 @@
 'use client'
 
-import { useState } from 'react'
-import { Button } from '@/components/ui/Button'
-import { 
-  PhoneIcon,
-  MapPinIcon,
-  EnvelopeIcon,
-  Bars3Icon,
-  XMarkIcon
-} from '@heroicons/react/24/outline'
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+
+interface NavigationItem {
+  name: string
+  href: string
+}
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isSticky, setIsSticky] = useState(false)
+  const pathname = usePathname()
 
-  const navigationItems = [
-    'HOME',
-    'ROOMS',
-    'MEETING AND EVENTS',
-    'PROMOS',
-    'PHOTOS',
-    'ABOUT US',
-    'RESTAURANT',
-    'CONTACT US'
+  const navigationItems: NavigationItem[] = [
+    { name: 'HOME', href: '/' },
+    { name: 'EVENTS', href: '/events' },
+    { name: 'PACKAGES', href: '/packages' },
+    { name: 'GALLERY', href: '/gallery' },
+    { name: 'CONTACT', href: '/contact' }
   ]
 
-  return (
-    <header className="bg-primary-500 text-white">
-      {/* Top Contact Bar */}
-      <div className="border-b border-gray-600">
-        <div className="container-custom">
-          <div className="flex flex-col sm:flex-row justify-between items-center py-2 text-sm">
-            <div className="flex items-center space-x-4 mb-2 sm:mb-0">
-              <div className="flex items-center space-x-2">
-                <PhoneIcon className="h-4 w-4" />
-                <span>+63 32 238 6062</span>
-              </div>
-            </div>
-            <div className="flex items-center space-x-6">
-              <div className="flex items-center space-x-2">
-                <MapPinIcon className="h-4 w-4" />
-                <span>FELIX AVENUE, SANTA RIZAL, PHILIPPINES</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <EnvelopeIcon className="h-4 w-4" />
-                <span>STRADELLAHOTEL.COM</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  const isActive = (href: string) => pathname === href
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // Get the height of the hero section (100vh)
+      const heroHeight = window.innerHeight
+      
+      // Check if we've scrolled past the hero section
+      const shouldBeSticky = window.scrollY >= heroHeight
+      
+      setIsSticky(shouldBeSticky)
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll)
+    
+    // Call once to check initial position
+    handleScroll()
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  return (
+    <header className={`top-0 left-0 right-0 z-[9999] text-white transition-all duration-300 ease-in-out ${
+      isSticky
+        ? 'fixed bg-white bg-opacity-25 backdrop-blur-sm shadow-lg border border-black/10'
+        : 'absolute'
+    }`}>
       {/* Main Navigation */}
       <div className="container-custom">
-        <div className="flex justify-between items-center py-4">
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2"
-          >
-            {isMobileMenuOpen ? (
-              <XMarkIcon className="h-6 w-6" />
-            ) : (
-              <Bars3Icon className="h-6 w-6" />
-            )}
-          </button>
-
+        <div className="flex justify-between items-center py-2">
           {/* Logo */}
-          <div className="flex-1 flex justify-center lg:justify-start lg:flex-none">
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-accent-gold rounded-full flex items-center justify-center mb-2">
-                <span className="font-playfair font-bold text-2xl text-white">S</span>
-              </div>
-              <div className="font-playfair text-xl font-bold text-accent-gold text-center">
-                STRADELLA<br />HOTEL
-              </div>
-            </div>
+          <div className="flex-shrink-0">
+            <Link href="/" className="block">
+              <Image
+                src="/images/logos/Logo-Whistler-Garden_white_HD.png"
+                alt="Whistler Garden Logo"
+                width={200}
+                height={60}
+                className="h-auto w-auto max-w-[35%] md:max-w-[65%]"
+                priority
+              />
+            </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-8 ml-8">
+          {/* Navigation - Right-aligned and always visible */}
+          <nav className="flex items-center space-x-6 md:space-x-8">
             {navigationItems.map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="font-inter text-sm font-medium hover:text-accent-gold transition-colors duration-200"
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`relative font-inter text-xs md:text-sm font-medium transition-colors duration-200 py-2 ${
+                  isActive(item.href)
+                    ? 'text-primary-gold-light'
+                    : 'hover:text-primary-gold-light'
+                }`}
               >
-                {item}
-              </a>
+                {item.name}
+                {/* Active indicator - bottom border */}
+                {isActive(item.href) && (
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-gold-light"></span>
+                )}
+              </Link>
             ))}
           </nav>
         </div>
-
-        {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-gray-600">
-            <nav className="py-4 space-y-4">
-              {navigationItems.map((item) => (
-                <a
-                  key={item}
-                  href="#"
-                  className="block font-inter text-sm font-medium hover:text-accent-gold transition-colors duration-200 py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item}
-                </a>
-              ))}
-            </nav>
-          </div>
-        )}
       </div>
     </header>
   )
