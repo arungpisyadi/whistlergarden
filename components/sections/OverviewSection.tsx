@@ -1,162 +1,235 @@
-import React from 'react'
+'use client'
+
+import React, { useState, useEffect } from 'react'
 
 interface OverviewSectionProps {
   className?: string
 }
 
+interface ProjectImage {
+  id: number
+  title: string
+  image: string
+  description: string
+}
+
 const OverviewSection = ({ className }: OverviewSectionProps) => {
-  const keySellingPoints = [
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  
+  // 8 project images for the carousel
+  const projectImages: ProjectImage[] = [
     {
-      title: "Balinese Elegance",
-      description: "Experience the perfect harmony of classical Balinese architecture with modern luxury amenities",
-      icon: "🏛️",
-      stats: "Authentic Design"
+      id: 1,
+      title: "RESIDENTIAL CAPE PROJECT IN PARIS",
+      image: "https://placehold.co/200x400/007bff/FFFFFF?text=Paris+Project",
+      description: "Elegant residential development"
     },
     {
-      title: "Natural Beauty",
-      description: "Surrounded by lush tropical gardens that create a serene and picturesque setting",
-      icon: "🌿",
-      stats: "Garden Paradise"
+      id: 2,
+      title: "CONCERT HALL IN NEW YORK",
+      image: "https://placehold.co/200x400/28a745/FFFFFF?text=NYC+Concert",
+      description: "Modern concert venue design"
     },
     {
-      title: "Premium Facilities",
-      description: "Multiple venue options including glass houses, ballroom, and luxury accommodation",
-      icon: "✨",
-      stats: "6+ Event Spaces"
+      id: 3,
+      title: "MODERN HOTEL IN LONDON",
+      image: "https://placehold.co/200x400/6f42c1/FFFFFF?text=London+Hotel",
+      description: "Luxury hotel architecture"
     },
     {
-      title: "Culinary Excellence",
-      description: "World-class dining featuring fusion of local and international cuisine",
-      icon: "🍽️",
-      stats: "Award-Winning"
+      id: 4,
+      title: "LUXURY RESORT IN BALI",
+      image: "https://placehold.co/200x400/17a2b8/FFFFFF?text=Bali+Resort",
+      description: "Tropical paradise retreat"
+    },
+    {
+      id: 5,
+      title: "CORPORATE OFFICE IN SINGAPORE",
+      image: "https://placehold.co/200x400/e83e8c/FFFFFF?text=Singapore+Office",
+      description: "Contemporary office complex"
+    },
+    {
+      id: 6,
+      title: "WELLNESS CENTER IN TOKYO",
+      image: "https://placehold.co/200x400/dc3545/FFFFFF?text=Tokyo+Wellness",
+      description: "Zen-inspired wellness facility"
+    },
+    {
+      id: 7,
+      title: "RESTAURANT IN MILAN",
+      image: "https://placehold.co/200x400/20c997/FFFFFF?text=Milan+Restaurant",
+      description: "Fine dining establishment"
+    },
+    {
+      id: 8,
+      title: "BOUTIQUE HOTEL IN SANTORINI",
+      image: "https://placehold.co/200x400/6610f2/FFFFFF?text=Santorini+Hotel",
+      description: "Mediterranean luxury experience"
     }
   ]
 
-  const achievements = [
-    { number: "500+", label: "Events Hosted" },
-    { number: "98%", label: "Guest Satisfaction" },
-    { number: "16", label: "Luxury Suites" },
-    { number: "24/7", label: "Concierge Service" }
+  // Always show 3 items per view
+  const imagesPerView = 3
+
+  // Create extended array for infinite loop (duplicate items at beginning and end)
+  const extendedImages = [
+    ...projectImages.slice(-imagesPerView), // Last items at beginning
+    ...projectImages, // Original items
+    ...projectImages.slice(0, imagesPerView) // First items at end
   ]
 
+  // Handle infinite looping
+  const handlePrev = () => {
+    if (isTransitioning) return
+    setIsTransitioning(true)
+    setCurrentIndex(prev => prev - 1)
+  }
+
+  const handleNext = () => {
+    if (isTransitioning) return
+    setIsTransitioning(true)
+    setCurrentIndex(prev => prev + 1)
+  }
+
+  // Handle infinite loop reset
+  useEffect(() => {
+    if (isTransitioning) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(false)
+        if (currentIndex >= projectImages.length) {
+          setCurrentIndex(0)
+        } else if (currentIndex < 0) {
+          setCurrentIndex(projectImages.length - 1)
+        }
+      }, 500) // Match transition duration
+      return () => clearTimeout(timeout)
+    }
+  }, [currentIndex, isTransitioning, projectImages.length])
+
+  // Get the actual index for dot indicators
+  const getActualIndex = () => {
+    if (currentIndex < 0) return projectImages.length + currentIndex
+    if (currentIndex >= projectImages.length) return currentIndex - projectImages.length
+    return currentIndex
+  }
+
+  // Calculate transform for centering - offset by 1 item to center the middle item
+  const getTransform = () => {
+    const baseOffset = imagesPerView; // Offset for cloned items at start
+    const centerOffset = 1; // Additional offset to center the middle item
+    const totalOffset = baseOffset + currentIndex + centerOffset
+    return `translateX(-${(totalOffset * 100) / imagesPerView}%)`
+  }
+
   return (
-    <section className={`py-16 md:py-24 bg-gradient-to-b from-amber-900 to-amber-800 text-white ${className}`}>
+    <section className={`py-16 md:py-24 bg-primary-gold-dark text-white ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Why Choose Whistler Garden
+            Overview
           </h2>
-          <div className="w-20 h-1 bg-amber-300 mx-auto mb-6"></div>
-          <p className="text-lg text-amber-100 max-w-3xl mx-auto">
-            Discover what makes Whistler Garden the premier destination for unforgettable events 
-            and luxurious accommodations in Bali's most beautiful setting.
+          <div className="w-20 h-1 bg-amber-400 mx-auto mb-6"></div>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            Explore our portfolio of exceptional projects that showcase our commitment 
+            to creating extraordinary spaces and unforgettable experiences.
           </p>
         </div>
 
-        {/* Key Selling Points */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {keySellingPoints.map((point, index) => (
-            <div key={index} className="text-center group">
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 hover:bg-opacity-20 transition-all duration-300">
-                <div className="w-16 h-16 bg-amber-300 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-opacity-30 transition-colors">
-                  <span className="text-2xl">{point.icon}</span>
-                </div>
-                <h3 className="text-lg font-bold mb-2">{point.title}</h3>
-                <p className="text-amber-100 text-sm leading-relaxed mb-3">
-                  {point.description}
-                </p>
-                <span className="inline-block px-3 py-1 bg-amber-300 bg-opacity-20 text-amber-200 text-xs rounded-full font-medium">
-                  {point.stats}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Carousel Container */}
+        <div className="relative">
+          {/* Navigation Arrows */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+            aria-label="Previous images"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
 
-        {/* Achievements Stats */}
-        <div className="bg-white bg-opacity-5 backdrop-blur-sm rounded-lg p-8 mb-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {achievements.map((achievement, index) => (
-              <div key={index} className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-amber-300 mb-2">
-                  {achievement.number}
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+            aria-label="Next images"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Carousel Images */}
+          <div className="overflow-hidden px-12">
+            <div
+              className={`flex gap-4 ${isTransitioning ? 'transition-transform duration-500 ease-in-out' : ''}`}
+              style={{
+                transform: getTransform(),
+              }}
+            >
+              {extendedImages.map((project, index) => (
+                <div
+                  key={`${project.id}-${index}`}
+                  className="flex-shrink-0"
+                  style={{ width: `calc(${100 / imagesPerView}% - 1rem)` }}
+                >
+                  <div className="group cursor-pointer">
+                    <div className="relative overflow-hidden rounded-lg bg-primary-gold">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full aspect-[1/2] object-cover transition-transform duration-300 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      {/* Overlay on hover */}
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center p-4">
+                          <h3 className="text-white font-bold text-sm md:text-base mb-2 leading-tight">
+                            {project.title}
+                          </h3>
+                          <p className="text-gray-300 text-xs md:text-sm">
+                            {project.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="text-amber-100 text-sm uppercase tracking-wide">
-                  {achievement.label}
-                </div>
-              </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Carousel Indicators */}
+          <div className="flex justify-center mt-8 space-x-2">
+            {projectImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === getActualIndex() ? 'bg-amber-400' : 'bg-gray-600 hover:bg-gray-500'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
             ))}
           </div>
         </div>
 
-        {/* Experience Highlights */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold mb-4">
-              The Whistler Garden Experience
-            </h3>
-            <p className="text-amber-100 leading-relaxed">
-              From the moment you arrive, you'll be immersed in an atmosphere of elegance 
-              and tranquility. Our commitment to excellence is evident in every detail, 
-              from our meticulously maintained gardens to our personalized service.
-            </p>
-            
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <span className="text-amber-300 text-lg mt-1">🎯</span>
-                <div>
-                  <h4 className="font-semibold text-white">Personalized Service</h4>
-                  <p className="text-amber-100 text-sm">Dedicated event coordinators for every occasion</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <span className="text-amber-300 text-lg mt-1">🌟</span>
-                <div>
-                  <h4 className="font-semibold text-white">Exceptional Quality</h4>
-                  <p className="text-amber-100 text-sm">Premium amenities and attention to detail</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <span className="text-amber-300 text-lg mt-1">🏆</span>
-                <div>
-                  <h4 className="font-semibold text-white">Award-Winning Excellence</h4>
-                  <p className="text-amber-100 text-sm">Recognized for outstanding hospitality</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Image Placeholder */}
-          <div className="relative">
-            <div className="w-full h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden">
-              <img
-                src="https://placehold.co/800x600/059669/FFFFFF?text=image"
-                alt="Garden Landscape at Hotel"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-20 h-20 bg-amber-300 rounded-full opacity-20"></div>
-            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-amber-400 rounded-full opacity-30"></div>
-          </div>
-        </div>
-
-        {/* Final Call to Action */}
+        {/* Additional Info */}
         <div className="text-center mt-16">
-          <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-8">
-            <h3 className="text-2xl font-bold mb-4">Begin Your Journey With Us</h3>
-            <p className="text-amber-100 mb-6 max-w-2xl mx-auto">
-              Whether you're planning an intimate celebration or a grand event, 
-              Whistler Garden provides the perfect setting for creating lasting memories.
+          <div className="bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-lg p-8">
+            <h3 className="text-2xl font-bold mb-4">Our Portfolio Excellence</h3>
+            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+              Each project represents our dedication to creating spaces that blend 
+              architectural innovation with timeless elegance, delivering experiences 
+              that exceed expectations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-amber-300 text-amber-900 px-8 py-3 rounded-lg font-bold hover:bg-amber-200 transition-colors">
-                Book Your Event
+              <button className="bg-amber-400 text-gray-900 px-8 py-3 rounded-lg font-bold hover:bg-amber-300 transition-colors">
+                View Full Portfolio
               </button>
-              <button className="border border-amber-300 text-amber-300 px-8 py-3 rounded-lg font-semibold hover:bg-amber-300 hover:text-amber-900 transition-colors">
-                Schedule a Visit
+              <button className="border border-amber-400 text-amber-400 px-8 py-3 rounded-lg font-semibold hover:bg-amber-400 hover:text-gray-900 transition-colors">
+                Start Your Project
               </button>
             </div>
           </div>

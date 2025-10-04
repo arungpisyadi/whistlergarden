@@ -6,8 +6,8 @@ interface AboutSectionProps {
 
 const AboutSection = ({ className }: AboutSectionProps) => {
   return (
-    <section className={`py-16 md:py-24 ${className}`} style={{ backgroundColor: '#ca914b' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className={`py-16 md:py-24 ${className}`}>
+      <div className="bg-primary-gold-dark max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Two Staggered Images */}
           <div className="relative h-96 md:h-[500px] lg:order-first">
@@ -44,7 +44,7 @@ const AboutSection = ({ className }: AboutSectionProps) => {
                 About Us
               </h2>
               {/* Golden decorative line */}
-              <div className="w-16 h-1 ml-0 mb-6" style={{ backgroundColor: '#9b7345' }}></div>
+              <div className="w-16 h-1 ml-0 mb-6 bg-primary-gold-light"></div>
             </div>
             
             <p className="text-lg md:text-xl text-amber-100 leading-relaxed">

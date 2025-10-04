@@ -30,7 +30,7 @@ export default function Home() {
       <FacilitiesSection />
 
       {/* Photo Slides Section for Facility Showcase */}
-      <FeatureSections />
+      {/* <FeatureSections /> */}
 
       {/* Overview & Key Selling Points */}
       <OverviewSection />

@@ -38,7 +38,7 @@ const CulinarySection = ({ className }: CulinarySectionProps) => {
       />
       
       {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/35" />
       
       {/* Content Layer */}
       <div className="relative z-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,6 +47,10 @@ const CulinarySection = ({ className }: CulinarySectionProps) => {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Our Culinary
           </h2>
+          <div className="w-16 h-1 mx-auto mb-6 bg-primary-gold-light"></div>
+          <p className="text-lg md:text-xl text-white leading-relaxed">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+        </p>
         </div>
 
         {/* Culinary Highlights */}
