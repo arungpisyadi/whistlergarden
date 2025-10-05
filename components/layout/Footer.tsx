@@ -3,7 +3,14 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import { 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faFacebookF,
+  faInstagram,
+  faYoutube,
+  faTiktok
+} from '@fortawesome/free-brands-svg-icons'
+import {
   MapPinIcon,
   PhoneIcon,
   GlobeAltIcon,
@@ -34,17 +41,17 @@ const Footer = ({ className }: FooterProps) => {
   }
 
   const socialLinks = [
-    { name: 'Facebook', icon: '📘', href: '#' },
-    { name: 'Instagram', icon: '📷', href: '#' },
-    { name: 'Twitter', icon: '🐦', href: '#' },
-    { name: 'LinkedIn', icon: '💼', href: '#' }
+    { name: 'Facebook', icon: faFacebookF, href: '#' },
+    { name: 'Instagram', icon: faInstagram, href: '#' },
+    { name: 'YouTube', icon: faYoutube, href: '#' },
+    { name: 'TikTok', icon: faTiktok, href: '#' }
   ]
 
   return (
-    <footer className={`bg-primary-500 text-white ${className}`}>
-      <div className="container-custom section-padding">
+    <footer className={`bg-black text-white ${className}`}>
+      <div className="container-custom py-16">
         {/* Newsletter Section */}
-        <div className="text-center mb-16">
+        {/* <div className="text-center mb-16">
           <h3 className="font-playfair text-3xl md:text-4xl font-semibold mb-4">
             NEWS AND OFFERS FROM US
           </h3>
@@ -72,20 +79,19 @@ const Footer = ({ className }: FooterProps) => {
               </Button>
             </div>
           </form>
-        </div>
+        </div> */}
 
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {/* Hotel Logo & Info */}
           <div className="text-center lg:text-left">
-            <div className="flex justify-center lg:justify-start mb-6">
+            <div className="flex justify-center lg:justify-start mb-6 md:mb-0">
               <div className="flex flex-col items-center lg:items-start">
-                <div className="w-20 h-20 bg-accent-gold rounded-full flex items-center justify-center mb-4">
-                  <span className="font-playfair font-bold text-2xl text-white">W</span>
-                </div>
-                <div className="font-playfair text-2xl font-bold text-accent-gold">
-                  WHISTLER<br />GARDEN
-                </div>
+                <img
+                  src="/images/logos/Logo-Whistler-Garden_white_HD.png"
+                  alt="Whistler Garden Logo"
+                  className="w-40 h-40 object-contain mb-4 md:mb-0"
+                />
               </div>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
@@ -101,19 +107,19 @@ const Footer = ({ className }: FooterProps) => {
             <div className="space-y-4 text-sm">
               <div className="flex items-center justify-center lg:justify-start space-x-3">
                 <MapPinIcon className="h-5 w-5 text-accent-gold flex-shrink-0" />
-                <span>JALAN WHISTLER GARDEN, BALI, INDONESIA</span>
+                <span>Jl. Rasuna Said, Salembaran, Kosambi, Tangerang Regency, Banten 15214</span>
               </div>
               <div className="flex items-center justify-center lg:justify-start space-x-3">
                 <PhoneIcon className="h-5 w-5 text-accent-gold flex-shrink-0" />
-                <span>+62 361 123 4567</span>
+                <span>+62 811-8118-7567</span>
               </div>
-              <div className="flex items-center justify-center lg:justify-start space-x-3">
+              {/* <div className="flex items-center justify-center lg:justify-start space-x-3">
                 <GlobeAltIcon className="h-5 w-5 text-accent-gold flex-shrink-0" />
                 <span>WHISTLERGARDEN.COM</span>
-              </div>
+              </div> */}
               <div className="flex items-center justify-center lg:justify-start space-x-3">
                 <EnvelopeIcon className="h-5 w-5 text-accent-gold flex-shrink-0" />
-                <span>INFO@WHISTLERGARDEN.COM</span>
+                <span>salesteam.wg@gmail.com</span>
               </div>
             </div>
           </div>
@@ -131,7 +137,10 @@ const Footer = ({ className }: FooterProps) => {
                   className="w-10 h-10 bg-gray-700 hover:bg-accent-gold rounded-full flex items-center justify-center transition-colors duration-200"
                   aria-label={social.name}
                 >
-                  <span className="text-lg">{social.icon}</span>
+                  <FontAwesomeIcon
+                    icon={social.icon}
+                    className="w-4 h-4"
+                  />
                 </a>
               ))}
             </div>
@@ -147,7 +156,7 @@ const Footer = ({ className }: FooterProps) => {
         <div className="border-t border-gray-600 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-gray-300">
-              © 2024 Whistler Garden. All rights reserved.
+              © 2025 Whistler Garden. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-gray-300 hover:text-accent-gold transition-colors duration-200">
