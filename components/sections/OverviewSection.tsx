@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 interface OverviewSectionProps {
   className?: string
@@ -16,6 +16,10 @@ interface ProjectImage {
 const OverviewSection = ({ className }: OverviewSectionProps) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [imagesPerView, setImagesPerView] = useState(3)
+  const [touchStartX, setTouchStartX] = useState(0)
+  const [touchEndX, setTouchEndX] = useState(0)
+  const carouselRef = useRef<HTMLDivElement>(null)
   
   // 8 project images for the carousel
   const projectImages: ProjectImage[] = [
@@ -69,8 +73,25 @@ const OverviewSection = ({ className }: OverviewSectionProps) => {
     }
   ]
 
-  // Always show 3 items per view
-  const imagesPerView = 3
+  // Responsive images per view: 1 on mobile, 3 on desktop
+  useEffect(() => {
+    const updateImagesPerView = () => {
+      if (window.innerWidth < 768) {
+        setImagesPerView(1)
+      } else {
+        setImagesPerView(3)
+      }
+    }
+
+    // Set initial value
+    updateImagesPerView()
+    
+    // Add event listener
+    window.addEventListener('resize', updateImagesPerView)
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', updateImagesPerView)
+  }, [])
 
   // Create extended array for infinite loop (duplicate items at beginning and end)
   const extendedImages = [
@@ -107,6 +128,36 @@ const OverviewSection = ({ className }: OverviewSectionProps) => {
     }
   }, [currentIndex, isTransitioning, projectImages.length])
 
+  // Touch event handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (imagesPerView > 1) return // Only enable swipe on mobile
+    setTouchStartX(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (imagesPerView > 1) return // Only enable swipe on mobile
+    setTouchEndX(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (imagesPerView > 1) return // Only enable swipe on mobile
+    if (!touchStartX || !touchEndX) return
+    
+    const distance = touchStartX - touchEndX
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) {
+      handleNext()
+    }
+    if (isRightSwipe) {
+      handlePrev()
+    }
+    
+    setTouchStartX(0)
+    setTouchEndX(0)
+  }
+
   // Get the actual index for dot indicators
   const getActualIndex = () => {
     if (currentIndex < 0) return projectImages.length + currentIndex
@@ -117,7 +168,7 @@ const OverviewSection = ({ className }: OverviewSectionProps) => {
   // Calculate transform for centering - offset by 1 item to center the middle item
   const getTransform = () => {
     const baseOffset = imagesPerView; // Offset for cloned items at start
-    const centerOffset = 1; // Additional offset to center the middle item
+    const centerOffset = imagesPerView === 1 ? 0 : 1; // No center offset needed for mobile (1 item)
     const totalOffset = baseOffset + currentIndex + centerOffset
     return `translateX(-${(totalOffset * 100) / imagesPerView}%)`
   }
@@ -161,18 +212,22 @@ const OverviewSection = ({ className }: OverviewSectionProps) => {
           </button>
 
           {/* Carousel Images */}
-          <div className="overflow-hidden px-12">
+          <div className="overflow-hidden md:px-12">
             <div
-              className={`flex gap-4 ${isTransitioning ? 'transition-transform duration-500 ease-in-out' : ''}`}
+              ref={carouselRef}
+              className={`flex md:gap-4 ${isTransitioning ? 'transition-transform duration-500 ease-in-out' : ''}`}
               style={{
                 transform: getTransform(),
               }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               {extendedImages.map((project, index) => (
                 <div
                   key={`${project.id}-${index}`}
                   className="flex-shrink-0"
-                  style={{ width: `calc(${100 / imagesPerView}% - 1rem)` }}
+                  style={{ width: `${100 / imagesPerView}%` }}
                 >
                   <div className="group cursor-pointer">
                     <div className="relative overflow-hidden rounded-lg bg-primary-gold">

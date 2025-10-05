@@ -12,6 +12,7 @@ interface NavigationItem {
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
   const navigationItems: NavigationItem[] = [
@@ -23,6 +24,33 @@ const Header = () => {
   ]
 
   const isActive = (href: string) => pathname === href
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false)
+  }
+
+  // Close mobile menu when pathname changes
+  useEffect(() => {
+    closeMobileMenu()
+  }, [pathname])
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMobileMenuOpen])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,8 +98,8 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Navigation - Right-aligned and always visible */}
-          <nav className="flex items-center space-x-6 md:space-x-8">
+          {/* Desktop Navigation - Hidden on mobile */}
+          <nav className="hidden md:flex items-center space-x-6 md:space-x-8">
             {navigationItems.map((item) => (
               <Link
                 key={item.name}
@@ -90,8 +118,107 @@ const Header = () => {
               </Link>
             ))}
           </nav>
+
+          {/* Mobile Burger Button - Visible on mobile only */}
+          <button
+            className="md:hidden relative w-8 h-8 flex flex-col justify-center items-center group focus:outline-none focus:ring-2 focus:ring-primary-gold-light focus:ring-offset-2 focus:ring-offset-transparent"
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+          >
+            {/* Hamburger Icon - transforms to X when open */}
+            <span
+              className={`block h-0.5 w-6 bg-white transition-all duration-300 ease-in-out ${
+                isMobileMenuOpen ? 'rotate-45 translate-y-0.5' : '-translate-y-1'
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-white transition-all duration-300 ease-in-out ${
+                isMobileMenuOpen ? 'opacity-0' : 'opacity-100'
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-6 bg-white transition-all duration-300 ease-in-out ${
+                isMobileMenuOpen ? '-rotate-45 -translate-y-0.5' : 'translate-y-1'
+              }`}
+            />
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-50 md:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="mobile-menu-heading"
+        >
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300"
+            onClick={closeMobileMenu}
+            aria-hidden="true"
+          />
+          
+          {/* Mobile Menu Panel */}
+          <div className={`absolute top-0 right-0 w-64 h-full bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}>
+            {/* Mobile Menu Header */}
+            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+              <h2 id="mobile-menu-heading" className="text-lg font-semibold text-gray-900">
+                Menu
+              </h2>
+              <button
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-gold-light"
+                onClick={closeMobileMenu}
+                aria-label="Close navigation menu"
+              >
+                <span className="sr-only">Close menu</span>
+                {/* X icon */}
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Mobile Navigation Links */}
+            <nav className="py-4" id="mobile-menu">
+              {navigationItems.map((item, index) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`flex items-center px-6 py-4 text-base font-medium transition-colors duration-200 ${
+                    isActive(item.href)
+                      ? 'text-primary-gold-light bg-gray-50 border-r-4 border-primary-gold-light'
+                      : 'text-gray-900 hover:text-primary-gold-light hover:bg-gray-50'
+                  }`}
+                  onClick={closeMobileMenu}
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      closeMobileMenu()
+                      // Let the Link handle navigation
+                    }
+                  }}
+                >
+                  {item.name}
+                  {isActive(item.href) && (
+                    <span className="ml-auto">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                  )}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </div>
+      )}
     </header>
   )
 }

@@ -7,7 +7,7 @@ interface AboutSectionProps {
 const AboutSection = ({ className }: AboutSectionProps) => {
   return (
     <section className={`py-16 md:py-24 ${className}`}>
-      <div className="bg-primary-gold-dark max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-8">
+      <div className="bg-primary-gold-dark max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Two Staggered Images */}
           <div className="relative h-96 md:h-[500px] lg:order-first">

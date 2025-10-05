@@ -106,11 +106,11 @@ const Footer = ({ className }: FooterProps) => {
             </h4>
             <div className="space-y-4 text-sm">
               <div className="flex items-center justify-center lg:justify-start space-x-3">
-                <MapPinIcon className="h-5 w-5 text-accent-gold flex-shrink-0" />
+                <MapPinIcon className="hidden md:block h-5 w-5 text-accent-gold flex-shrink-0" />
                 <span>Jl. Rasuna Said, Salembaran, Kosambi, Tangerang Regency, Banten 15214</span>
               </div>
               <div className="flex items-center justify-center lg:justify-start space-x-3">
-                <PhoneIcon className="h-5 w-5 text-accent-gold flex-shrink-0" />
+                <PhoneIcon className="hidden md:block h-5 w-5 text-accent-gold flex-shrink-0" />
                 <span>+62 811-8118-7567</span>
               </div>
               {/* <div className="flex items-center justify-center lg:justify-start space-x-3">
@@ -118,7 +118,7 @@ const Footer = ({ className }: FooterProps) => {
                 <span>WHISTLERGARDEN.COM</span>
               </div> */}
               <div className="flex items-center justify-center lg:justify-start space-x-3">
-                <EnvelopeIcon className="h-5 w-5 text-accent-gold flex-shrink-0" />
+                <EnvelopeIcon className="hidden md:block h-5 w-5 text-accent-gold flex-shrink-0" />
                 <span>salesteam.wg@gmail.com</span>
               </div>
             </div>

@@ -34,7 +34,7 @@ const CompanyInfoSection = ({ className }: CompanyInfoSectionProps) => {
         {companyInfo.map((info, index) => (
           <div 
             key={index}
-            className="px-6 py-4 md:py-6 text-white flex justify-center items-center"
+            className="px-6 py-4 md:py-6 text-white flex justify-start md:justify-center items-start md:items-center"
             style={{ backgroundColor: info.backgroundColor }}
           >
             <div className="max-w-xs md:max-w-sm grid grid-cols-[auto_1fr] gap-4 items-center">
