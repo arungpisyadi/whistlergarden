@@ -11,7 +11,7 @@ const Hero = ({ className }: HeroProps) => {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url(/images/hero/hero-1.jpg)'
+          backgroundImage: 'url(/images/hero/hero-v1.jpg)'
         }}
       />
       
