@@ -1,90 +1,113 @@
+'use client'
+
 import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Autoplay } from 'swiper/modules'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/navigation'
 
 interface CulinarySectionProps {
   className?: string
 }
 
 const CulinarySection = ({ className }: CulinarySectionProps) => {
-  const culinaryHighlights = [
+  const slides = [
     {
-      step: "STEP 1",
-      title: "Farm-to-table dining",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      imageUrl: "https://placehold.co/800x600/10B981/FFFFFF?text=image",
-      marginClass: "md:mt-0"
+      id: 1,
+      src: 'https://placehold.co/1200x800/10B981/FFFFFF?text=Slide+1',
+      alt: 'Culinary Slide 1'
     },
     {
-      step: "STEP 2",
-      title: "Sunset cocktails",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      imageUrl: "https://placehold.co/800x600/EA580C/FFFFFF?text=image",
-      marginClass: "md:mt-16"
+      id: 2,
+      src: 'https://placehold.co/1200x800/EF4444/FFFFFF?text=Slide+2',
+      alt: 'Culinary Slide 2'
     },
     {
-      step: "STEP 3",
-      title: "Intimate experiences",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      imageUrl: "https://placehold.co/800x600/D97706/FFFFFF?text=image",
-      marginClass: "md:mt-8"
+      id: 3,
+      src: 'https://placehold.co/1200x800/3B82F6/FFFFFF?text=Slide+3',
+      alt: 'Culinary Slide 3'
+    },
+    {
+      id: 4,
+      src: 'https://placehold.co/1200x800/F59E0B/FFFFFF?text=Slide+4',
+      alt: 'Culinary Slide 4'
+    },
+    {
+      id: 5,
+      src: 'https://placehold.co/1200x800/8B5CF6/FFFFFF?text=Slide+5',
+      alt: 'Culinary Slide 5'
+    },
+    {
+      id: 6,
+      src: 'https://placehold.co/1200x800/EC4899/FFFFFF?text=Slide+6',
+      alt: 'Culinary Slide 6'
     }
   ]
 
   return (
-    <section className={`relative py-16 md:py-24 ${className}`}>
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/images/cullinary/WG_RESTO_AREA-4.jpg)' }}
-      />
-      
-      {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/35" />
-      
+    <section className={`relative py-16 md:py-24 ${className}`} style={{ backgroundColor: '#7a5529' }}>
       {/* Content Layer */}
-      <div className="relative z-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Our Culinary
-          </h2>
-          <div className="w-16 h-1 mx-auto mb-6 bg-primary-gold-light"></div>
-          <p className="text-lg md:text-xl text-white leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-        </p>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Title and Description Section */}
+        <div className="space-y-6 mb-16 font-['Montserrat'] text-center">
+          <div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+              Our Cullinary
+            </h2>
+            {/* Golden decorative line */}
+            <div className="w-16 h-1 mx-auto mb-6 bg-primary-gold-light"></div>
+          </div>
+          
+          <p className="text-lg md:text-xl text-amber-100 leading-relaxed max-w-3xl mx-auto">
+            Indulge in an unforgettable dining and culinary experience at Whistler Garden, where exquisite flavors meet elegant ambiance. From carefully curated menus to refined service, every moment is designed to delight your senses and elevate your gathering into a truly memorable occasion.
+          </p>
         </div>
 
-        {/* Culinary Highlights */}
-        <div className="flex flex-col md:flex-row md:flex-wrap md:justify-center md:items-start gap-8">
-          {culinaryHighlights.map((highlight, index) => (
-            <div key={index} className={`w-full md:w-80 lg:w-96 ${highlight.marginClass}`}>
-              {/* Card Container with FeatureSection structure */}
-              <div className="bg-white bg-opacity-25 backdrop-blur-sm shadow-lg rounded-lg border border-black/10 overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                {/* Top Visual Section */}
-                <div className="h-64 md:h-72 relative">
+        {/* Image Slider */}
+        <div className="relative h-[32rem] md:h-[40rem] rounded-lg overflow-hidden">
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            navigation={{
+              nextEl: '.culinary-swiper-button-next',
+              prevEl: '.culinary-swiper-button-prev',
+            }}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            className="h-full"
+          >
+            {slides.map((slide) => (
+              <SwiperSlide key={slide.id}>
+                <div className="relative h-full">
+                  {/* Slide Image */}
                   <img
-                    src={highlight.imageUrl}
-                    alt={highlight.title}
-                    className="w-full h-full object-cover"
+                    src={slide.src}
+                    alt={slide.alt}
+                    className="absolute inset-0 w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  {/* Dark overlay on slides */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-black/30" />
                 </div>
-                
-                {/* Bottom Content Section */}
-                <div className="p-6">
-                  {/* <div className="text-xs font-semibold text-gray-500 mb-2 tracking-wider uppercase">
-                    {highlight.step}
-                  </div> */}
-                  <h3 className="text-primary-gold-dark text-xl md:text-3xl mb-4">
-                    {highlight.title}
-                  </h3>
-                  <p className="text-black mb-6 leading-relaxed">
-                    {highlight.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation Buttons */}
+          <div className="culinary-swiper-button-prev absolute -left-2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black hover:bg-black/80 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg hover:shadow-xl">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </div>
+          <div className="culinary-swiper-button-next absolute -right-2 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black hover:bg-black/80 flex items-center justify-center cursor-pointer transition-all duration-300 shadow-lg hover:shadow-xl">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
         </div>
       </div>
     </section>
