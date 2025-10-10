@@ -48,15 +48,7 @@ const AboutSection = ({ className }: AboutSectionProps) => {
             </div>
             
             <p className="text-lg md:text-xl text-amber-100 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-            </p>
-            
-            <p className="text-lg text-amber-100 leading-relaxed">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <p className="text-lg text-amber-100 leading-relaxed">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.
+              Whistler Garden is more than a venue — it is a masterpiece of Balinese elegance, where classical architecture meets the beauty of nature. Every corner is designed to host your most spectacular celebrations, from weddings to corporate gatherings, creating an atmosphere of timeless charm and unforgettable memories.
             </p>
 
             {/* Book Now Button */}
