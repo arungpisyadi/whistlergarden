@@ -14,10 +14,8 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 export default function Events() {
-  const [activeEventType, setActiveEventType] = useState<string>('wedding')
-
-  // Wedding event venues
-  const weddingVenues = [
+  // Consolidated venues array
+  const venues = [
     {
       id: 'sky-glass-house',
       name: 'Sky Glass House',
@@ -56,23 +54,6 @@ export default function Events() {
         'https://placehold.co/800x600/10B981/FFFFFF/png?text=Luxury+Reception+Setup',
         'https://placehold.co/800x600/34D399/FFFFFF/png?text=Dancing+%26+Celebration'
       ]
-    }
-  ]
-
-  // Corporate event venues
-  const corporateVenues = [
-    {
-      id: 'function-room',
-      name: 'Function Room',
-      tagline: 'Luxury function room designed to elevate every event with elegance, comfort, and unforgettable atmosphere',
-      capacity: 'Up to 100 guests',
-      features: ['Modern Equipment', 'Flexible Setup', 'Professional Environment', 'High-Speed Wi-Fi'],
-      description: 'Our versatile Function Room combines luxury with functionality, providing the perfect environment for corporate events, meetings, and professional gatherings with modern amenities and flexible arrangements.',
-      images: [
-        'https://placehold.co/800x600/1F2937/FFFFFF/png?text=Function+Room+Setup',
-        'https://placehold.co/800x600/374151/FFFFFF/png?text=Professional+Presentation',
-        'https://placehold.co/800x600/4B5563/FFFFFF/png?text=Corporate+Networking'
-      ]
     },
     {
       id: 'vip-room',
@@ -86,35 +67,18 @@ export default function Events() {
         'https://placehold.co/800x600/92400E/FFFFFF/png?text=Executive+Room+Setup',
         'https://placehold.co/800x600/A16207/FFFFFF/png?text=Private+Dining+Area'
       ]
-    }
-  ]
-
-  // Special events
-  const specialEvents = [
-    {
-      id: 'custom-celebrations',
-      name: 'Custom Celebrations',
-      tagline: 'Tailored experiences that transform your vision into unforgettable reality',
-      capacity: 'Customizable capacity',
-      features: ['Custom Theming', 'Personalized Service', 'Flexible Venues', 'Creative Freedom'],
-      description: 'From milestone birthdays to anniversary celebrations, we create bespoke experiences tailored to your unique vision. Our expert team works with you to bring your dream event to life.',
-      images: [
-        'https://placehold.co/800x600/BE185D/FFFFFF/png?text=Birthday+Celebration',
-        'https://placehold.co/800x600/DB2777/FFFFFF/png?text=Anniversary+Setup',
-        'https://placehold.co/800x600/EC4899/FFFFFF/png?text=Special+Event+Space'
-      ]
     },
     {
-      id: 'private-dining',
-      name: 'Private Dining Experiences',
-      tagline: 'Intimate culinary journeys in exclusive settings',
-      capacity: 'Up to 30 guests',
-      features: ['Chef\'s Table Experience', 'Wine Pairing', 'Intimate Setting', 'Personalized Menu'],
-      description: 'Indulge in exclusive private dining experiences with our acclaimed culinary team. Perfect for intimate celebrations, business dinners, and special occasions that call for exceptional cuisine.',
+      id: 'function-room',
+      name: 'Function Room',
+      tagline: 'Luxury function room designed to elevate every event with elegance, comfort, and unforgettable atmosphere',
+      capacity: 'Up to 100 guests',
+      features: ['Modern Equipment', 'Flexible Setup', 'Professional Environment', 'High-Speed Wi-Fi'],
+      description: 'Our versatile Function Room combines luxury with functionality, providing the perfect environment for corporate events, meetings, and professional gatherings with modern amenities and flexible arrangements.',
       images: [
-        'https://placehold.co/800x600/7C3AED/FFFFFF/png?text=Private+Dining+Setup',
-        'https://placehold.co/800x600/8B5CF6/FFFFFF/png?text=Chef+Table+Experience',
-        'https://placehold.co/800x600/A78BFA/FFFFFF/png?text=Wine+Pairing+Dinner'
+        'https://placehold.co/800x600/1F2937/FFFFFF/png?text=Function+Room+Setup',
+        'https://placehold.co/800x600/374151/FFFFFF/png?text=Professional+Presentation',
+        'https://placehold.co/800x600/4B5563/FFFFFF/png?text=Corporate+Networking'
       ]
     }
   ]
@@ -180,7 +144,7 @@ export default function Events() {
           </div>
         </div>
 
-        <Button className="w-full bg-primary-500 hover:bg-primary-600 text-white">
+        <Button className="w-full" variant="primary" size="md">
           Inquire About This Venue
         </Button>
       </div>
@@ -193,127 +157,51 @@ export default function Events() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative bg-primary-500 text-white py-32 full-width">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-500" />
-        <div className="relative z-10 container-custom">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-6">
-              Exceptional Events
-            </h1>
-            <p className="font-inter text-xl md:text-2xl text-primary-50 leading-relaxed mb-8">
-              Create unforgettable moments in our stunning venues. From intimate celebrations to grand galas, 
-              Whistler Garden provides the perfect backdrop for your most important occasions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-white text-primary-500 hover:bg-primary-50 px-8 py-4 text-lg">
-                Schedule a Tour
-              </Button>
-              <Button className="border-2 border-white text-white hover:bg-white hover:text-primary-500 px-8 py-4 text-lg">
-                Download Brochure
-              </Button>
+      <section className="relative h-screen lg:h-[86.5vh]">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(https://placehold.co/1920x1080/1a365d/ffffff.jpg)'
+          }}
+        />
+        
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/35" />
+        
+        {/* Hero Content */}
+        <div className="relative z-0 h-full flex items-end justify-start bottom-16">
+          <div className="text-right text-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div>
+              <p className="text-base md:text-xl mb-4 text-shadow-lg">
+                Exceptional Events & Celebrations
+              </p>
+              <h1 className="text-2xl md:text-2xl lg:text-3xl font-bold text-shadow-lg mb-8 tracking-wide">
+                WHISTLER GARDEN
+              </h1>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Event Categories Navigation */}
+      {/* Venues Section */}
       <section className="py-16 bg-gray-50">
         <div className="container-custom">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="font-playfair text-4xl font-bold text-primary-500 mb-4">Our Event Spaces</h2>
-            <p className="font-inter text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover our exceptional venues, each designed to create the perfect atmosphere for your celebration
+            <p className="font-inter text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Discover the perfect destination for Meetings, Incentives, Conferences, and Exhibitions. Our venue combines state-of-the-art facilities, exceptional service, and a prestigious atmosphere to ensure every event is seamless, impactful, and memorable.
+            </p>
+            <p className="font-inter text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              We believe every meeting and event should be more than just a gathering. Whether you are planning a corporate conference, team-building retreat, or milestone celebration, our dedicated team is here to transform your vision into a remarkable event.
             </p>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
-            <button
-              onClick={() => setActiveEventType('wedding')}
-              className={`px-8 py-3 rounded-lg font-inter font-semibold transition-all duration-300 ${
-                activeEventType === 'wedding'
-                  ? 'bg-primary-500 text-white shadow-lg'
-                  : 'bg-white text-primary-500 hover:bg-primary-50 border border-primary-200'
-              }`}
-            >
-              Wedding Events
-            </button>
-            <button
-              onClick={() => setActiveEventType('corporate')}
-              className={`px-8 py-3 rounded-lg font-inter font-semibold transition-all duration-300 ${
-                activeEventType === 'corporate'
-                  ? 'bg-primary-500 text-white shadow-lg'
-                  : 'bg-white text-primary-500 hover:bg-primary-50 border border-primary-200'
-              }`}
-            >
-              Corporate Events
-            </button>
-            <button
-              onClick={() => setActiveEventType('special')}
-              className={`px-8 py-3 rounded-lg font-inter font-semibold transition-all duration-300 ${
-                activeEventType === 'special'
-                  ? 'bg-primary-500 text-white shadow-lg'
-                  : 'bg-white text-primary-500 hover:bg-primary-50 border border-primary-200'
-              }`}
-            >
-              Special Events
-            </button>
+          <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-8 mb-16">
+            {venues.map((venue) => renderVenueCard(venue, 'venue'))}
           </div>
         </div>
       </section>
-
-      {/* Wedding Events Section */}
-      {activeEventType === 'wedding' && (
-        <section className="py-16">
-          <div className="container-custom">
-            <div className="text-center mb-16">
-              <h3 className="font-playfair text-3xl md:text-4xl font-bold text-primary-500 mb-4">Wedding Venues</h3>
-              <p className="font-inter text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                Your wedding day deserves a setting as beautiful and unique as your love story. Choose from our stunning glass houses and grand ballroom, each offering a distinctive atmosphere for your perfect day.
-              </p>
-            </div>
-            
-            <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-8 mb-16">
-              {weddingVenues.map((venue) => renderVenueCard(venue, 'wedding'))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Corporate Events Section */}
-      {activeEventType === 'corporate' && (
-        <section className="py-16">
-          <div className="container-custom">
-            <div className="text-center mb-16">
-              <h3 className="font-playfair text-3xl md:text-4xl font-bold text-primary-500 mb-4">Corporate Venues</h3>
-              <p className="font-inter text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                Elevate your business events with our professional venues equipped with modern amenities and sophisticated environments designed to impress clients and inspire teams.
-              </p>
-            </div>
-            
-            <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-8 mb-16">
-              {corporateVenues.map((venue) => renderVenueCard(venue, 'corporate'))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Special Events Section */}
-      {activeEventType === 'special' && (
-        <section className="py-16">
-          <div className="container-custom">
-            <div className="text-center mb-16">
-              <h3 className="font-playfair text-3xl md:text-4xl font-bold text-primary-500 mb-4">Special Celebrations</h3>
-              <p className="font-inter text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                From milestone birthdays to intimate anniversaries, we create bespoke experiences that celebrate life's most precious moments with style and sophistication.
-              </p>
-            </div>
-            
-            <div className="grid lg:grid-cols-1 xl:grid-cols-2 gap-8 mb-16">
-              {specialEvents.map((venue) => renderVenueCard(venue, 'special'))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Services Overview */}
       <section className="py-16 bg-primary-500 text-white full-width">
@@ -372,10 +260,10 @@ export default function Events() {
               Contact our events team today to discuss your vision and discover how we can make your special occasion unforgettable.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 text-lg">
+              <Button className="px-8 py-4 text-lg" variant="primary" size="lg">
                 Contact Events Team
               </Button>
-              <Button className="border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white px-8 py-4 text-lg">
+              <Button className="px-8 py-4 text-lg" variant="secondary" size="lg">
                 Request a Quote
               </Button>
             </div>
