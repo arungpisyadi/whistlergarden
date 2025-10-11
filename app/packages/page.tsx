@@ -10,68 +10,6 @@ export const metadata: Metadata = {
 }
 
 export default function Packages() {
-  const weddingPackages = [
-    {
-      name: 'Intimate Wedding',
-      price: 'Starting from IDR 15,000,000',
-      venue: 'Sky Glass House',
-      capacity: 'Up to 50 guests',
-      accommodation: '40m² Suite',
-      features: [
-        'Sky Glass House venue rental',
-        '40m² Suite accommodation for couple',
-        'Wedding ceremony setup',
-        'Bridal bouquet & groom boutonniere',
-        'Wedding cake for 50 guests',
-        'Welcome drinks for guests',
-        'Professional photography (2 hours)',
-        'Romantic room decoration',
-        'Complimentary honeymoon breakfast'
-      ]
-    },
-    {
-      name: 'Grand Wedding',
-      price: 'Starting from IDR 35,000,000',
-      venue: 'Royal Glass House',
-      capacity: 'Up to 120 guests',
-      accommodation: '50m² Premium Suite',
-      features: [
-        'Royal Glass House venue rental',
-        '50m² Premium Suite accommodation',
-        'Wedding ceremony & reception setup',
-        'Bridal suite preparation room',
-        'Multi-tier wedding cake',
-        'Welcome cocktail hour',
-        'Professional photography (4 hours)',
-        'Floral arrangements & decorations',
-        'Sound system & microphones',
-        'Wedding coordinator services',
-        'Honeymoon suite upgrade'
-      ],
-      popular: true
-    },
-    {
-      name: 'Luxury Wedding',
-      price: 'Starting from IDR 75,000,000',
-      venue: 'Grand Ballroom',
-      capacity: 'Up to 300 guests',
-      accommodation: 'Multiple Premium Suites',
-      features: [
-        'Grand Ballroom venue rental',
-        'Multiple Premium Suite accommodations',
-        'Full wedding ceremony & reception',
-        'VIP bridal preparation suite',
-        'Luxury wedding cake & dessert station',
-        'Premium cocktail reception',
-        'Professional photography & videography',
-        'Live music or DJ services',
-        'Premium floral & lighting design',
-        'Dedicated wedding planner',
-        'Luxury transportation',
-        'Post-wedding brunch for family'
-      ]
-    }
-  ]
 
   const corporatePackages = [
     {
@@ -244,8 +182,13 @@ export default function Packages() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-gold-800 to-primary-gold-600 text-white py-24 lg:py-32">
-        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+      <section
+        className="relative text-white py-24 lg:py-32 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('https://placehold.co/1920x800/493010/ffffff/png?text=packages')"
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-black/25" />
         <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-shadow-lg">
@@ -267,80 +210,6 @@ export default function Packages() {
         </div>
       </section>
 
-      {/* Package Categories Navigation */}
-      <section className="bg-neutral-cream-50 py-8">
-        <div className="container-custom">
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="#wedding" className="px-6 py-3 bg-primary-gold text-white rounded-lg hover:bg-primary-gold-dark transition-colors">
-              Wedding Packages
-            </a>
-            <a href="#corporate" className="px-6 py-3 bg-white text-primary-gold border border-primary-gold rounded-lg hover:bg-primary-gold hover:text-white transition-colors">
-              Corporate Packages
-            </a>
-            <a href="#hotel" className="px-6 py-3 bg-white text-primary-gold border border-primary-gold rounded-lg hover:bg-primary-gold hover:text-white transition-colors">
-              Hotel Packages
-            </a>
-            <a href="#experience" className="px-6 py-3 bg-white text-primary-gold border border-primary-gold rounded-lg hover:bg-primary-gold hover:text-white transition-colors">
-              Experience Packages
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Wedding Packages */}
-      <section id="wedding" className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-section-title mb-6">Wedding Packages</h2>
-            <p className="font-inter text-lg text-gray-700 max-w-3xl mx-auto">
-              Make your special day unforgettable with our carefully crafted wedding packages. 
-              From intimate ceremonies to grand celebrations, we offer the perfect setting for your dream wedding.
-            </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-3 gap-8">
-            {weddingPackages.map((pkg, index) => (
-              <div key={index} className={`relative bg-gradient-to-b from-neutral-cream-50 to-white border-2 ${pkg.popular ? 'border-primary-gold' : 'border-neutral-beige-200'} rounded-xl p-8 hover:shadow-xl transition-shadow`}>
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-primary-gold text-white px-6 py-2 rounded-full text-sm font-semibold">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                
-                <div className="text-center mb-8">
-                  <h3 className="font-playfair text-2xl font-bold text-primary-gold-800 mb-2">{pkg.name}</h3>
-                  <p className="text-3xl font-bold text-primary-gold mb-4">{pkg.price}</p>
-                  <div className="space-y-1 text-gray-600">
-                    <p className="font-semibold">{pkg.venue}</p>
-                    <p>{pkg.capacity}</p>
-                    <p>{pkg.accommodation}</p>
-                  </div>
-                </div>
-                
-                <div className="space-y-3 mb-8">
-                  {pkg.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start">
-                      <CheckIcon className="w-5 h-5 text-primary-gold mt-0.5 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="space-y-3">
-                  <button className="w-full btn-primary">
-                    Book Now
-                  </button>
-                  <button className="w-full btn-secondary">
-                    Learn More
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Corporate Packages */}
       <section id="corporate" className="section-padding bg-neutral-cream-50">
@@ -505,69 +374,6 @@ export default function Packages() {
         </div>
       </section>
 
-      {/* Package Comparison Table */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-section-title mb-6">Package Comparison</h2>
-            <p className="font-inter text-lg text-gray-700 max-w-3xl mx-auto">
-              Compare our packages to find the perfect fit for your needs and budget.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white border border-neutral-beige-200 rounded-lg">
-              <thead className="bg-primary-gold text-white">
-                <tr>
-                  <th className="px-6 py-4 text-left font-playfair text-lg">Features</th>
-                  <th className="px-6 py-4 text-center font-playfair text-lg">Wedding</th>
-                  <th className="px-6 py-4 text-center font-playfair text-lg">Corporate</th>
-                  <th className="px-6 py-4 text-center font-playfair text-lg">Hotel</th>
-                  <th className="px-6 py-4 text-center font-playfair text-lg">Experience</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-neutral-beige-200">
-                <tr>
-                  <td className="px-6 py-4 font-semibold">Accommodation Included</td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                </tr>
-                <tr className="bg-neutral-cream-50">
-                  <td className="px-6 py-4 font-semibold">Dining Services</td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 font-semibold">Event Coordination</td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                  <td className="px-6 py-4 text-center">—</td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                </tr>
-                <tr className="bg-neutral-cream-50">
-                  <td className="px-6 py-4 font-semibold">Photography Services</td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                  <td className="px-6 py-4 text-center">Optional</td>
-                  <td className="px-6 py-4 text-center">—</td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 font-semibold">Transportation</td>
-                  <td className="px-6 py-4 text-center">Luxury Tier</td>
-                  <td className="px-6 py-4 text-center"><CheckIcon className="w-5 h-5 text-green-600 mx-auto" /></td>
-                  <td className="px-6 py-4 text-center">—</td>
-                  <td className="px-6 py-4 text-center">—</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
       {/* Special Offers */}
       <section className="section-padding bg-gradient-to-r from-primary-gold-700 to-primary-gold-600 text-white">
         <div className="container-custom">
@@ -578,17 +384,7 @@ export default function Packages() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 text-center">
-              <h3 className="font-playfair text-2xl font-bold mb-4">Early Bird Wedding</h3>
-              <p className="text-6xl font-bold mb-4">15%</p>
-              <p className="text-xl mb-6">OFF all wedding packages</p>
-              <p className="mb-6">Book your 2024 wedding before December 31st and save on any wedding package</p>
-              <button className="btn-secondary bg-white text-primary-gold hover:bg-primary-gold-50">
-                Book Now
-              </button>
-            </div>
-
+          <div className="max-w-lg mx-auto">
             <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 text-center">
               <h3 className="font-playfair text-2xl font-bold mb-4">Extended Stay Deal</h3>
               <p className="text-6xl font-bold mb-4">20%</p>
@@ -616,13 +412,13 @@ export default function Packages() {
               <div className="bg-white rounded-lg p-6 text-center">
                 <PhoneIcon className="w-8 h-8 text-primary-gold mx-auto mb-4" />
                 <h3 className="font-playfair text-xl font-semibold mb-2">Call Us</h3>
-                <p className="text-gray-600">+62 21 1234 5678</p>
+                <a href="tel:+6281181187567" className="text-gray-600 hover:text-primary-gold cursor-pointer transition-colors">+62 811-8118-7567</a>
                 <p className="text-sm text-gray-500">Available 24/7</p>
               </div>
               <div className="bg-white rounded-lg p-6 text-center">
                 <EnvelopeIcon className="w-8 h-8 text-primary-gold mx-auto mb-4" />
                 <h3 className="font-playfair text-xl font-semibold mb-2">Email Us</h3>
-                <p className="text-gray-600">packages@whistlergarden.com</p>
+                <a href="mailto:salesteam.wg@gmail.com" className="text-gray-600 hover:text-primary-gold cursor-pointer transition-colors">salesteam.wg@gmail.com</a>
                 <p className="text-sm text-gray-500">Response within 24 hours</p>
               </div>
             </div>
