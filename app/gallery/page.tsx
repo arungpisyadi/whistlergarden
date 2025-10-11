@@ -55,7 +55,7 @@ export default function Gallery() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-gold via-primary-gold-light to-primary-gold-dark text-white py-24 md:py-32">
+      <section className="relative bg-gradient-to-br from-primary-gold via-primary-gold-light to-primary-gold-dark text-white h-[60vh] flex items-center">
         <div className="absolute inset-0 bg-black/10" />
         
         <div className="container-custom relative z-10">

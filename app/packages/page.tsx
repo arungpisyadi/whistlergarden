@@ -183,7 +183,7 @@ export default function Packages() {
 
       {/* Hero Section */}
       <section
-        className="relative text-white py-24 lg:py-32 bg-cover bg-center bg-no-repeat"
+        className="relative text-white h-[60vh] bg-cover bg-center bg-no-repeat flex items-center"
         style={{
           backgroundImage: "url('https://placehold.co/1920x800/493010/ffffff/png?text=packages')"
         }}

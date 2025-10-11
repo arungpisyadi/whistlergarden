@@ -157,7 +157,7 @@ export default function Events() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-screen lg:h-[86.5vh]">
+      <section className="relative h-[60vh]">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"

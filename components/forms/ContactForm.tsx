@@ -167,7 +167,7 @@ const ContactForm = ({ onSubmit, className }: ContactFormProps) => {
         <Button
           onClick={() => setShowSuccess(false)}
           variant="outline"
-          className="bg-green-600 text-white hover:bg-green-700 border-green-600"
+          className="bg-primary-gold-light text-white hover:bg-primary-gold-light/90 border-primary-gold-light"
         >
           Send Another Message
         </Button>
@@ -269,7 +269,7 @@ const ContactForm = ({ onSubmit, className }: ContactFormProps) => {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="bg-accent-gold text-white px-8 py-3 rounded-lg font-inter font-medium hover:bg-accent-gold/90 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-primary-gold-light text-white px-8 py-3 rounded-lg font-inter font-medium hover:bg-primary-gold-light/90 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'Sending...' : 'Send Message'}
           </Button>

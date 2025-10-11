@@ -25,14 +25,20 @@ export default function Contact() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative bg-primary-500 text-white py-24">
-        <div className="container-custom">
+      <section
+        className="relative text-white h-[60vh] bg-cover bg-center bg-no-repeat flex items-center"
+        style={{
+          backgroundImage: "url('https://placehold.co/1920x800/493010/ffffff/png?text=contact')"
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-black/25" />
+        <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="font-playfair text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="font-playfair text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-shadow-lg">
               Contact Whistler Garden
             </h1>
-            <p className="font-inter text-xl text-gray-200 leading-relaxed">
-              Located in the heart of PIK 2 Entertainment District, we're here to make your 
+            <p className="font-inter text-xl md:text-2xl text-neutral-cream-100 leading-relaxed mb-8">
+              Located in the heart of PIK 2 Entertainment District, we're here to make your
               special moments unforgettable. Contact our expert team for personalized assistance.
             </p>
           </div>
