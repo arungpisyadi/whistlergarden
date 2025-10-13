@@ -60,7 +60,7 @@ export const galleryPhotos: Photo[] = [
   // Accommodations
   {
     id: 'acc-001',
-    src: 'https://placehold.co/800x600/7C3AED/FFFFFF?text=image',
+    src: 'https://placehold.co/800x600/7C3AED/FFFFFF/jpg?text=Suite+Room+40m²+Bedroom',
     alt: 'Suite Room 40m² - Bedroom View',
     title: 'Suite Room 40m²',
     description: 'Spacious bedroom with modern amenities and elegant furnishing',
@@ -69,7 +69,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'acc-002',
-    src: 'https://placehold.co/800x450/3B82F6/FFFFFF?text=image',
+    src: 'https://placehold.co/800x450/3B82F6/FFFFFF/jpg?text=Premium+Suite+Living+Area',
     alt: 'Premium Suite Room 50m² - Living Area',
     title: 'Premium Suite Room 50m²',
     description: 'Luxurious living area with comfortable seating and premium décor',
@@ -78,7 +78,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'acc-003',
-    src: 'https://placehold.co/600x800/10B981/FFFFFF?text=image',
+    src: 'https://placehold.co/600x800/10B981/FFFFFF/jpg?text=Premium+Suite+Bathroom',
     alt: 'Suite Bathroom',
     title: 'Premium Bathroom',
     description: 'Modern bathroom with luxurious fixtures and marble finishings',
@@ -87,7 +87,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'acc-004',
-    src: 'https://placehold.co/800x450/EA580C/FFFFFF?text=image',
+    src: 'https://placehold.co/800x450/EA580C/FFFFFF/jpg?text=Garden+View+Balcony',
     alt: 'Suite Balcony View',
     title: 'Garden View Balcony',
     description: 'Private balcony overlooking the beautiful garden landscape',
@@ -98,7 +98,7 @@ export const galleryPhotos: Photo[] = [
   // Venues
   {
     id: 'ven-001',
-    src: 'https://placehold.co/800x450/DC2626/FFFFFF?text=image',
+    src: 'https://placehold.co/800x450/DC2626/FFFFFF/jpg?text=Sky+Glass+House+Interior',
     alt: 'Sky Glass House Interior',
     title: 'Sky Glass House',
     description: 'Modern glass pavilion perfect for intimate gatherings and ceremonies',
@@ -107,7 +107,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'ven-002',
-    src: 'https://placehold.co/800x600/6B7280/FFFFFF?text=image',
+    src: 'https://placehold.co/800x600/6B7280/FFFFFF/jpg?text=Royal+Glass+House+Setup',
     alt: 'Royal Glass House Setup',
     title: 'Royal Glass House',
     description: 'Elegant venue setup for weddings and special celebrations',
@@ -116,7 +116,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'ven-003',
-    src: 'https://placehold.co/800x450/D97706/FFFFFF?text=image',
+    src: 'https://placehold.co/800x450/D97706/FFFFFF/jpg?text=Grand+Ballroom+Space',
     alt: 'Grand Ballroom',
     title: 'Grand Ballroom',
     description: 'Spacious ballroom with crystal chandeliers and elegant décor',
@@ -125,7 +125,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'ven-004',
-    src: 'https://placehold.co/800x600/059669/FFFFFF?text=image',
+    src: 'https://placehold.co/800x600/059669/FFFFFF/jpg?text=VIP+Function+Room',
     alt: 'VIP Function Room',
     title: 'VIP Function Room',
     description: 'Intimate setting for executive meetings and private functions',
@@ -136,7 +136,7 @@ export const galleryPhotos: Photo[] = [
   // Events
   {
     id: 'eve-001',
-    src: 'https://placehold.co/800x450/7C3AED/FFFFFF?text=image',
+    src: 'https://placehold.co/800x450/7C3AED/FFFFFF/jpg?text=Garden+Wedding+Ceremony',
     alt: 'Wedding Ceremony Setup',
     title: 'Garden Wedding Ceremony',
     description: 'Beautiful outdoor ceremony with floral arrangements and elegant seating',
@@ -145,7 +145,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'eve-002',
-    src: 'https://placehold.co/800x600/3B82F6/FFFFFF?text=image',
+    src: 'https://placehold.co/800x600/3B82F6/FFFFFF/jpg?text=Elegant+Wedding+Reception',
     alt: 'Wedding Reception',
     title: 'Elegant Wedding Reception',
     description: 'Beautifully decorated reception hall with romantic lighting',
@@ -154,7 +154,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'eve-003',
-    src: 'https://placehold.co/800x450/10B981/FFFFFF?text=image',
+    src: 'https://placehold.co/800x450/10B981/FFFFFF/jpg?text=Corporate+Conference',
     alt: 'Corporate Meeting',
     title: 'Corporate Conference',
     description: 'Professional meeting setup with modern AV equipment',
@@ -163,7 +163,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'eve-004',
-    src: 'https://placehold.co/800x600/EA580C/FFFFFF?text=image',
+    src: 'https://placehold.co/800x600/EA580C/FFFFFF/jpg?text=Special+Celebration',
     alt: 'Birthday Celebration',
     title: 'Special Celebration',
     description: 'Festive party setup with decorations and entertainment area',
@@ -174,7 +174,7 @@ export const galleryPhotos: Photo[] = [
   // Dining
   {
     id: 'din-001',
-    src: 'https://placehold.co/800x450/DC2626/FFFFFF?text=image',
+    src: 'https://placehold.co/800x450/DC2626/FFFFFF/jpg?text=Whistler+Restaurant+Interior',
     alt: 'Main Restaurant Interior',
     title: 'Whistler Restaurant',
     description: 'Elegant dining room with sophisticated ambiance and garden views',
@@ -183,7 +183,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'din-002',
-    src: 'https://placehold.co/800x600/6B7280/FFFFFF?text=image',
+    src: 'https://placehold.co/800x600/6B7280/FFFFFF/jpg?text=Fine+Dining+Experience',
     alt: 'Fine Dining Setup',
     title: 'Fine Dining Experience',
     description: 'Exquisite table setting with premium tableware and floral arrangements',
@@ -192,7 +192,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'din-003',
-    src: 'https://placehold.co/800x600/D97706/FFFFFF?text=image',
+    src: 'https://placehold.co/800x600/D97706/FFFFFF/jpg?text=Culinary+Masterpiece',
     alt: 'Gourmet Cuisine',
     title: 'Culinary Masterpiece',
     description: 'Artfully presented dishes showcasing our chef\'s expertise',
@@ -201,7 +201,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'din-004',
-    src: 'https://placehold.co/800x450/059669/FFFFFF?text=image',
+    src: 'https://placehold.co/800x450/059669/FFFFFF/jpg?text=Private+Dining+Room',
     alt: 'Private Dining Area',
     title: 'Private Dining Room',
     description: 'Intimate dining space for exclusive gatherings and celebrations',
@@ -212,7 +212,7 @@ export const galleryPhotos: Photo[] = [
   // Gardens & Architecture
   {
     id: 'gar-001',
-    src: 'https://placehold.co/800x450/7C3AED/FFFFFF?text=image',
+    src: 'https://placehold.co/800x450/7C3AED/FFFFFF/jpg?text=Whistler+Garden+Landscape',
     alt: 'Garden Landscape',
     title: 'Whistler Gardens',
     description: 'Lush tropical gardens with carefully curated plant collections',
@@ -221,7 +221,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'gar-002',
-    src: 'https://placehold.co/800x600/3B82F6/FFFFFF?text=image',
+    src: 'https://placehold.co/800x600/3B82F6/FFFFFF/jpg?text=Traditional+Balinese+Design',
     alt: 'Balinese Architecture',
     title: 'Traditional Balinese Design',
     description: 'Authentic architectural elements showcasing local craftsmanship',
@@ -230,7 +230,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'gar-003',
-    src: 'https://placehold.co/600x800/10B981/FFFFFF?text=image',
+    src: 'https://placehold.co/600x800/10B981/FFFFFF/jpg?text=Garden+Water+Feature',
     alt: 'Water Feature',
     title: 'Garden Water Feature',
     description: 'Tranquil water fountain creating a serene atmosphere',
@@ -239,7 +239,7 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: 'gar-004',
-    src: 'https://placehold.co/800x450/EA580C/FFFFFF?text=image',
+    src: 'https://placehold.co/800x450/EA580C/FFFFFF/jpg?text=Whistler+Garden+Exterior',
     alt: 'Building Exterior',
     title: 'Whistler Garden Exterior',
     description: 'Impressive building façade blending modern and traditional elements',

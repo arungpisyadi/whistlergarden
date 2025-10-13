@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Photo } from '@/lib/galleryData'
 
@@ -23,6 +23,55 @@ export const Lightbox = ({
   onNext,
   onPrevious
 }: LightboxProps) => {
+  const [dimensions, setDimensions] = useState<{width: number, height: number} | null>(null)
+
+  // Calculate optimal dimensions based on aspect ratio and viewport
+  useEffect(() => {
+    if (!isOpen || !photo) return
+
+    const calculateDimensions = () => {
+      const maxWidth = Math.min(window.innerWidth * 0.9, 1200) // 90vw, max 1200px
+      const maxHeight = Math.min(window.innerHeight * 0.7, 800) // 70vh, max 800px
+      
+      let aspectWidth: number, aspectHeight: number
+      
+      // Parse aspect ratio
+      switch (photo.aspectRatio) {
+        case '16/9':
+          aspectWidth = 16; aspectHeight = 9
+          break
+        case '4/3':
+          aspectWidth = 4; aspectHeight = 3
+          break
+        case '3/4':
+          aspectWidth = 3; aspectHeight = 4
+          break
+        default: // square
+          aspectWidth = 1; aspectHeight = 1
+      }
+      
+      // Calculate width and height that fit within constraints while maintaining aspect ratio
+      const widthFromHeight = maxHeight * (aspectWidth / aspectHeight)
+      const heightFromWidth = maxWidth * (aspectHeight / aspectWidth)
+      
+      if (widthFromHeight <= maxWidth) {
+        // Height is the limiting factor
+        setDimensions({ width: widthFromHeight, height: maxHeight })
+      } else {
+        // Width is the limiting factor
+        setDimensions({ width: maxWidth, height: heightFromWidth })
+      }
+    }
+
+    calculateDimensions()
+    
+    // Recalculate on window resize
+    const handleResize = () => calculateDimensions()
+    window.addEventListener('resize', handleResize)
+    
+    return () => window.removeEventListener('resize', handleResize)
+  }, [isOpen, photo])
+
   // Handle keyboard navigation
   useEffect(() => {
     if (!isOpen) return
@@ -90,10 +139,10 @@ export const Lightbox = ({
           {photos.length > 1 && currentIndex > 0 && (
             <button
               onClick={onPrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white hover:text-gray-300 p-3 hover:bg-white/10 rounded-full transition-colors"
+              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 text-white/90 hover:text-white p-2 md:p-3 hover:bg-black/30 rounded-full transition-all duration-200 backdrop-blur-sm border border-white/20 hover:border-white/40"
               aria-label="Previous photo"
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
@@ -103,25 +152,50 @@ export const Lightbox = ({
           {photos.length > 1 && currentIndex < photos.length - 1 && (
             <button
               onClick={onNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white hover:text-gray-300 p-3 hover:bg-white/10 rounded-full transition-colors"
+              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 text-white/90 hover:text-white p-2 md:p-3 hover:bg-black/30 rounded-full transition-all duration-200 backdrop-blur-sm border border-white/20 hover:border-white/40"
               aria-label="Next photo"
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
           )}
           
           {/* Image */}
-          <div className="relative max-w-full max-h-full">
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              width={1200}
-              height={800}
-              className="max-w-full max-h-[70vh] w-auto h-auto object-contain"
-              priority
-            />
+          <div className="relative flex items-center justify-center max-w-full max-h-full">
+            {dimensions && (
+              <div className="relative">
+                <div
+                  className="relative"
+                  style={{
+                    width: dimensions.width,
+                    height: dimensions.height,
+                  }}
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    className="object-contain"
+                    priority
+                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 80vw, 70vw"
+                  />
+                </div>
+                
+                {/* Image overlay for better contrast with navigation */}
+                <div className="absolute inset-0 pointer-events-none">
+                  {/* Left gradient for previous button */}
+                  {photos.length > 1 && currentIndex > 0 && (
+                    <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-black/20 to-transparent" />
+                  )}
+                  
+                  {/* Right gradient for next button */}
+                  {photos.length > 1 && currentIndex < photos.length - 1 && (
+                    <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-black/20 to-transparent" />
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </div>
         

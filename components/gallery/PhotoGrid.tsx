@@ -32,7 +32,7 @@ export const PhotoGrid = ({ photos, onPhotoClick, className = '' }: PhotoGridPro
           <div className="relative overflow-hidden">
             <div 
               className={`relative w-full ${
-                photo.aspectRatio === '16/9' ? 'aspect-video' : 
+                photo.aspectRatio === '16/9' ? 'aspect-[16/9]' : 
                 photo.aspectRatio === '4/3' ? 'aspect-[4/3]' : 
                 photo.aspectRatio === '3/4' ? 'aspect-[3/4]' : 
                 'aspect-square'

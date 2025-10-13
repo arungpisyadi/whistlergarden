@@ -31,7 +31,6 @@ export const CategoryFilter = ({
             }
           `}
         >
-          <span className="text-lg">{category.icon}</span>
           <span>{category.name}</span>
           <span className={`
             text-xs px-2 py-1 rounded-full

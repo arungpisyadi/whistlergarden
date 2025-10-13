@@ -55,46 +55,29 @@ export default function Gallery() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-gold via-primary-gold-light to-primary-gold-dark text-white h-[60vh] flex items-center">
-        <div className="absolute inset-0 bg-black/10" />
+      <section className="relative h-[60vh]">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(https://placehold.co/1920x1080/B59F3B/ffffff.jpg?text=Whistler+Garden+Gallery)'
+          }}
+        />
         
-        <div className="container-custom relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="mb-8">
-              <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-6">
-                <span className="text-2xl">📷</span>
-                <span className="font-inter text-sm font-medium tracking-wide uppercase">Visual Journey</span>
-              </div>
-              
-              <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-shadow-lg">
-                Discover Our Gallery
-              </h1>
-              
-              <p className="font-inter text-xl text-white/90 leading-relaxed max-w-3xl mx-auto">
-                Immerse yourself in the stunning beauty of Whistler Garden through our curated collection of photographs. 
-                From luxurious accommodations to breathtaking gardens, explore what makes our venue truly extraordinary.
-              </p>
-            </div>
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/35" />
+        
+        {/* Hero Content */}
+        <div className="relative z-10 h-full flex items-center justify-center">
+          <div className="text-center text-white max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-shadow-lg">
+              Discover Our Gallery
+            </h1>
             
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-2">{galleryPhotos.length}+</div>
-                <div className="text-sm text-white/80 font-inter">Beautiful Photos</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-2">5</div>
-                <div className="text-sm text-white/80 font-inter">Categories</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-2">15+</div>
-                <div className="text-sm text-white/80 font-inter">Unique Venues</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold mb-2">HD</div>
-                <div className="text-sm text-white/80 font-inter">Quality Images</div>
-              </div>
-            </div>
+            <p className="font-inter text-xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+              Immerse yourself in the stunning beauty of Whistler Garden through our curated collection of photographs.
+              From luxurious accommodations to breathtaking gardens, explore what makes our venue truly extraordinary.
+            </p>
           </div>
         </div>
       </section>
