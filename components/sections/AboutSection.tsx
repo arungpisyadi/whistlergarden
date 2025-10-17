@@ -1,62 +1,59 @@
+'use client'
+
 import React from 'react'
+import YouTube from 'react-youtube'
 
 interface AboutSectionProps {
   className?: string
 }
 
 const AboutSection = ({ className }: AboutSectionProps) => {
+  // YouTube player options
+  const opts = {
+    width: '100%',
+    height: '100%',
+    playerVars: {
+      autoplay: 0,
+      modestbranding: 1,
+      rel: 0,
+      showinfo: 0,
+    },
+  }
+
   return (
     <section className={`py-16 md:py-24 ${className}`}>
       <div className="bg-primary-gold-dark max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Two Staggered Images */}
-          <div className="relative h-96 md:h-[500px] lg:order-first">
-            {/* First Image - Positioned Higher */}
-            <div className="absolute top-0 left-0 w-3/5 z-10">
-              <div className="w-full h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src="https://placehold.co/800x1000/D97706/FFFFFF?text=image"
-                  alt="Hotel Architecture"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-
-            {/* Second Image - Positioned Lower and to the Right */}
-            <div className="absolute top-20 md:top-24 right-0 w-3/5 z-20">
-              <div className="w-full h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src="https://placehold.co/800x1000/DC2626/FFFFFF?text=image"
-                  alt="Luxury Hospitality"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-
+        {/* YouTube Video Player - Above Title */}
+        <div className="relative max-w-full mx-auto mb-16">
+          <div className="aspect-[16/9] bg-black rounded-lg overflow-hidden shadow-2xl">
+            <YouTube
+              videoId="mYW3sW9uOvI"
+              opts={opts}
+              className="w-full h-full"
+              iframeClassName="w-full h-full"
+            />
           </div>
+        </div>
 
-          {/* Right Side - Text Content */}
-          <div className="space-y-6 font-['Montserrat']">
-            <div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-                About Us
-              </h2>
-              {/* Golden decorative line */}
-              <div className="w-16 h-1 ml-0 mb-6 bg-primary-gold-light"></div>
-            </div>
-            
-            <p className="text-lg md:text-xl text-amber-100 leading-relaxed">
-              Whistler Garden is more than a venue — it is a masterpiece of Balinese elegance, where classical architecture meets the beauty of nature. Every corner is designed to host your most spectacular celebrations, from weddings to corporate gatherings, creating an atmosphere of timeless charm and unforgettable memories.
-            </p>
+        {/* Single Full-Width Row - Title and Description */}
+        <div className="text-center space-y-6 font-['Montserrat']">
+          <div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+              About Us
+            </h2>
+            {/* Golden decorative line */}
+            <div className="w-16 h-1 mx-auto mb-6 bg-primary-gold-light"></div>
+          </div>
+          
+          <p className="text-lg md:text-xl text-amber-100 leading-relaxed max-w-4xl mx-auto">
+            Whistler Garden is more than a venue — it is a masterpiece of Balinese elegance, where classical architecture meets the beauty of nature. Every corner is designed to host your most spectacular celebrations, from weddings to corporate gatherings, creating an atmosphere of timeless charm and unforgettable memories.
+          </p>
 
-            {/* Book Now Button */}
-            <div className="pt-8">
-              {/* <button className="bg-white text-amber-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                BOOK NOW
-              </button> */}
-            </div>
+          {/* Book Now Button */}
+          <div className="pt-8">
+            {/* <button className="bg-white text-amber-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
+              BOOK NOW
+            </button> */}
           </div>
         </div>
       </div>
